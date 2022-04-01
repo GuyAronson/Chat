@@ -5,13 +5,14 @@
     top:0;
     left: 0;
     width:110%;
-    height:40%;
+    height:30%;
     background-color: #8eb490;    
 }
 #logo{ 
     font-family: 'Lobster', cursive;
     position: absolute;
-    left: 150px;
+    left: 100px;
+    top:-10px;
 }
 
 #logo h1 {
