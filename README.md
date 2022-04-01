@@ -10,4 +10,4 @@ Create login & register page:
     * profile pic - url for the pick (should have a default url profile pic)
     * map for messages - key is recipients name, value is array of message with time sent.
 Chat page:
-* When inserting new person for a chat - check whether this person is exists in the recipients list.
+  * When inserting new person for a chat - check whether this person is exists in the recipients list.
