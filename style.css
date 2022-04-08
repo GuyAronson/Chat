@@ -1,51 +1,85 @@
 @import url(https://fonts.googleapis.com/css?family=Lobster);
 
-#top-container{
-    position: absolute;
-    top:0;
-    left: 0;
-    width:110%;
-    height:30%;
+body{
+  width:100%;
+  height:100%;
+}
+#top-container{  
+    width:100%;
+    padding-bottom:14%;
     background-color: #8eb490;    
 }
 #logo{ 
     font-family: 'Lobster', cursive;
     position: absolute;
-    left: 100px;
-    top:-10px;
+    left: 10%;
+    font-size: 200%;
 }
 
 #logo h1 {
   color: #D5E2D6;
   text-align: center;
   line-height: 35px;
-  margin-top: -175px;
-  margin-right: 15px;
+  margin-top: -180px;
+  margin-right: 10px;
   -moz-transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);
 -webkit-transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);
 -o-transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);
 -ms-transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);
 transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);
   /*-----------------------*/
-  text-shadow: 1px 1px #4A744D, 2px 2px #4A744D, 3px 3px #4A744D, 4px 4px #4A744D, 5px 5px #4A744D, 6px 6px #4A744D, 7px 7px #4A744D, 8px 8px #4A744D, 9px 9px #4A744D, 10px 10px #4A744D, 11px 11px #4A744D, 12px 12px #4A744D, 13px 13px #4A744D, 14px 14px #4A744D, 15px 15px #4A744D, 16px 16px #4A744D, 17px 17px #4A744D, 18px 18px #4A744D, 19px 19px #4A744D, 20px 20px #4A744D, 21px 21px #4A744D, 22px 22px #4A744D, 23px 23px #4A744D, 24px 24px #4A744D, 25px 25px #4A744D, 26px 26px 6px #06520C;
+  text-shadow: 1px 1px #4A744D, 2px 2px #4A744D, 3px 3px #4A744D, 4px 4px #4A744D, 5px 5px #4A744D, 6px 6px #4A744D, 7px 7px #4A744D, 8px 8px #4A744D, 9px 9px #4A744D, 10px 10px #4A744D, 11px 11px #4A744D, 12px 12px #4A744D, 13px 13px #4A744D, 14px 14px #4A744D, 15px 15px #4A744D, 16px 16px #4A744D, 17px 17px #4A744D;
   
 }
 
-#logo span:nth-child(3), span:nth-child(5) { 
-    font-size: 40px;
+#logo span:nth-child(1), span:nth-child(7) { 
+  font-size:150%;
 }
 #logo span:nth-child(5) { 
-    margin-left:25px;
-}
-
-#logo span:nth-child(1), span:nth-child(7) {
-  font-size: 65px;
+  margin-left: 15%; 
 }
 
 #logo-circle {
-    margin: auto;
     height: 200px;
     width: 200px;
     border-radius: 100%;
+    margin: auto;
     background: #4E8953;
+}
+.content{
+  padding-top: 20px;
+}
+.form{
+  position: absolute;
+  left:30%;
+  width:40%;
+  top:20%;
+  /* margin-bottom: 10em; */
+  background-color: #dfdfdf;
+}
+.hr-trick {
+  display: flex;
+  /* flex-direction: row; */
+  margin: 15px auto;
+}
+.hr-trick:before, .hr-trick:after{
+  content: "";
+  flex: 1 1;
+  border-bottom: 1.5px solid;
+  margin: auto;
+}
+.hr-trick:before {
+  margin-right: 10px
+}
+.hr-trick:after {
+  margin-left: 10px
+}
+.tab{
+  margin-left:2em;
+}
+.tab-right{
+  margin-right:2em;
+}
+.error-message{
+  color:red;
 }
