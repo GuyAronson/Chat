@@ -11,3 +11,7 @@ Create login & register page:
     * map for messages - key is recipients name, value is array of message with time sent.
 Chat page:
   * When inserting new person for a chat - check whether this person is exists in the recipients list.
+
+**Update:**
+* Register page is done + adding the user to the "DB"
+* Need to redirect from the register page to the chat page.
