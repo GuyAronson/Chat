@@ -10,10 +10,6 @@ class Chat extends React.Component{
     render(){
         return(
             <>
-                <div><Banner/></div>
-                <div className='content'>
-                    <div className='form'><Register/></div>
-                </div>
             </>
         );
     }

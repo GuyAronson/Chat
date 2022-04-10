@@ -54,7 +54,6 @@ transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) sk
   left:30%;
   width:40%;
   top:20%;
-  /* margin-bottom: 10em; */
   background-color: #dfdfdf;
 }
 .hr-trick {
@@ -82,4 +81,20 @@ transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) sk
 }
 .error-message{
   color:red;
+}
+.topic{
+  padding: 0.5em;
+  text-align:center;
+  text-decoration: underline;
+  opacity: 0.8;
+}
+.thumbnail{
+    border: 1px solid #ddd; /* Gray border */
+    border-radius: 4px;  /* Rounded border */
+    padding: 5px; /* Some padding */
+    width: 150px; /* Set a small width */
+}
+/* Add a hover effect (blue shadow) */
+.thumbnail:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }
