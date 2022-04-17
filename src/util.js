@@ -1,5 +1,5 @@
-import ProfilePicInput from './ProfiePicInput.js';
-import {users} from './users.js';
+import ProfilePicInput from './ProfiePicInput';
+import { users } from './users';
 
 /* Function gets email and validate it
     checks @ and . locations
@@ -29,59 +29,76 @@ export function validatePassword(password){
 // Gets a form onSubmit event and checks validation - add the user to the DB if the form is valid
 export function checkValidation(event){
     event.preventDefault();
-    let mail = event.target.emailInput.value;
-    let nickname = event.target.nicknameInput.value;
-    let password1 = event.target.passwordInput.value;
-    let password2 = event.target.passwordConfirmInput.value;
-    let username = event.target.usernameInput.value;
+    const email = event.target.emailInput.value;
+    const nickname = event.target.nicknameInput.value;
+    const password = event.target.passwordInput.value;
+    const matchPassword = event.target.passwordConfirmInput.value;
+    const username = event.target.usernameInput.value;
+    const isHuman = event.target.checkRobot.checked;
+    let formIsValid = true
+    clearErrors()
+    if(!username || username.length === 0) {
+        document.querySelector('#usernameErrorMessage').innerHTML = "Username is invalid.";
+        formIsValid = false
+    }
 
-    //Checks Usermame
-    if(username.length != 0){
-        document.querySelector('#usernameErrorMessage').innerHTML = "";    
+    if(!email || !validateEmail(email)) {
+        document.querySelector('#emailErrorMesage').innerHTML = "E-Mail is invalid.";
+        formIsValid = false
+    }
 
-        //Checks mail
-        if(validateEmail(mail)){
-            document.querySelector('#emailErrorMesage').innerHTML = "";    
+    if(!password || !validatePassword(password)) {
+        document.querySelector('#passErrorMesage').innerHTML = "Password is invalid. Need to be greater then 7 characters";
+        formIsValid = false
+    }
 
-            //Checks password
-            if(validatePassword(password1)){
-                document.querySelector('#passErrorMesage').innerHTML = "";
+    if(!matchPassword || password !== matchPassword) {
+        document.querySelector('#passConfirmErrorMesage').innerHTML = "Passwords does not match";
+        formIsValid = false
+    }
+    if(!isHuman) {
+        document.querySelector('#checkRobot').style.outline = "1px solid red";
+        formIsValid = false
+    }
 
-                //Checks password confirmation
-                if(password1 == password2){    
-                    document.querySelector('#passConfirmErrorMesage').innerHTML = "";    
-
-                    // Checks robot validation:
-                    if(event.target.checkRobot.checked){
-
-                        // Insert to DB
-                        let newUser = {
-                            "username": username,
-                            "mail":     mail,
-                            "password": password1,
-                            "nickname": nickname,
-                            "messages": []
-                        }
-                        let url = document.querySelector("#profileThumbnail").getAttribute('src');
-                        if(url)
-                        newUser.profilePic = url;
-                        insertUser(newUser);
-                        
-                    } else
-                        document.querySelector('#checkRobot').style.outline = "1px solid red";
-                } else
-                    document.querySelector('#passConfirmErrorMesage').innerHTML = "Passwords does not match";    
-            } else
-                document.querySelector('#passErrorMesage').innerHTML = "Password is invalid.";   
-        } else
-            document.querySelector('#emailErrorMesage').innerHTML = "Mail is invalid.";
-    } else
-        document.querySelector('#usernameErrorMessage').innerHTML = "Username is invalid.";           
-
+    if(formIsValid) {
+        let profilePicture = document.querySelector("#profileThumbnail").getAttribute('src') || '';
+        let user = {
+            username,// username: blah
+            email,
+            password,
+            nickname,
+            profilePicture,
+            messages: [
+                /*
+                    the data base in an array of messages objects.
+                    Each message contains the following keys:
+                        -authorID
+                        -recipientID
+                        -data
+                        -time stamp
+                    this way we can mannage the users messages and filter them out according to chat author and recipeint
+                */
+                ]
+        }
+        insertUser(user)
+        // not the right way to do it
+        window.location.href = '/chat'
+    }
+    
 }
 
 //Gets user object and adds it to the DB
 export function insertUser(user){
     users.push(user);
     console.log("users: ", users);
+}
+
+
+const clearErrors = () => {
+    document.querySelector('#usernameErrorMessage').innerHTML = ""; 
+    document.querySelector('#emailErrorMesage').innerHTML = "";    
+    document.querySelector('#passErrorMesage').innerHTML = "";
+    document.querySelector('#passConfirmErrorMesage').innerHTML = "";
+    document.querySelector('#checkRobot').style.outline = "";  
 }
