@@ -1,15 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Banner from './banner.js';
-import Register from '../register.js';
-
-//Objects of users - contains username, password, nickname, map of messages
-var users = [];
+import {getUsers} from './Data Base/DataBase';
 
 class Chat extends React.Component{
     render(){
         return(
-            <h1>This is the Chat!</h1>
+            <h1>This is the chat!{getUsers().map(user => console.log(user))}</h1>
         );
     }
 }

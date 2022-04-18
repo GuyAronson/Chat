@@ -1,11 +1,11 @@
 import ProfilePicInput from './ProfiePicInput';
-import { users } from './users';
+import { addUser, users, queryUserName, queryEmail } from './Data Base/DataBase';
+import User from './Data Base/User';
 
 /* Function gets email and validate it
     checks @ and . locations
     return true/false for validation    */
 export function validateEmail(email){
-
     var atposition=email.indexOf("@");  
     var dotposition = email.lastIndexOf(".");
     if (atposition <= 1 || dotposition <= atposition+2 || dotposition + 2 >= email.length){
@@ -39,60 +39,50 @@ export function checkValidation(event){
     clearErrors()
     if(!username || username.length === 0) {
         document.querySelector('#usernameErrorMessage').innerHTML = "Username is invalid.";
-        formIsValid = false
+        formIsValid = false;
+    }
+    if (queryUserName(username)) {
+        document.querySelector('#usernameErrorMessage').innerHTML = "Username is already taken.";
+        formIsValid = false;
     }
 
     if(!email || !validateEmail(email)) {
         document.querySelector('#emailErrorMesage').innerHTML = "E-Mail is invalid.";
-        formIsValid = false
+        formIsValid = false;
+    }
+    if(queryEmail(email)) {
+        document.querySelector('#emailErrorMesage').innerHTML = "E-Mail is already taken.";
+        formIsValid = false;
     }
 
     if(!password || !validatePassword(password)) {
         document.querySelector('#passErrorMesage').innerHTML = "Password is invalid. Need to be greater then 7 characters";
-        formIsValid = false
+        formIsValid = false;
     }
 
     if(!matchPassword || password !== matchPassword) {
         document.querySelector('#passConfirmErrorMesage').innerHTML = "Passwords does not match";
-        formIsValid = false
+        formIsValid = false;
     }
     if(!isHuman) {
         document.querySelector('#checkRobot').style.outline = "1px solid red";
-        formIsValid = false
+        formIsValid = false;
     }
 
     if(formIsValid) {
-        let profilePicture = document.querySelector("#profileThumbnail").getAttribute('src') || '';
-        let user = {
-            username,// username: blah
-            email,
-            password,
-            nickname,
-            profilePicture,
-            messages: [
-                /*
-                    the data base in an array of messages objects.
-                    Each message contains the following keys:
-                        -authorID
-                        -recipientID
-                        -data
-                        -time stamp
-                    this way we can mannage the users messages and filter them out according to chat author and recipeint
-                */
-                ]
-        }
-        insertUser(user)
-        // not the right way to do it
+        var profilePicture = document.querySelector("#profileThumbnail").getAttribute('src') || '';
+        var user = new User([username, email, password, nickname, profilePicture, []])
+        addUser(user);
+        // not the right way to do it !!!!!!!
         window.location.href = '/chat'
     }
-    
 }
 
 //Gets user object and adds it to the DB
-export function insertUser(user){
-    users.push(user);
-    console.log("users: ", users);
-}
+// export function insertUser(user){
+//     users.push(user);
+//     console.log("users: ", users);
+// }
 
 
 const clearErrors = () => {

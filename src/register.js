@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import ProfilePicInput from './ProfiePicInput.js';
-import PasswordInput from './src/PasswordInput.js';
+import PasswordInput from './PasswordInput.js';
 import UsernameInput from './UsernameInput.js';
 import {validateEmail, validatePassword, checkValidation} from './util.js';
 
