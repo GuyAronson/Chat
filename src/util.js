@@ -1,7 +1,4 @@
-import ProfilePicInput from './ProfiePicInput';
-import { addUser, users, queryUserName, queryEmail } from './Data Base/DataBase';
-import User from './Data Base/User';
-
+import { Database } from './Database'
 /* Function gets email and validate it
     checks @ and . locations
     return true/false for validation    */
@@ -41,7 +38,7 @@ export function checkValidation(event){
         document.querySelector('#usernameErrorMessage').innerHTML = "Username is invalid.";
         formIsValid = false;
     }
-    if (queryUserName(username)) {
+    if (Database.queryUsername(username)) {
         document.querySelector('#usernameErrorMessage').innerHTML = "Username is already taken.";
         formIsValid = false;
     }
@@ -50,7 +47,7 @@ export function checkValidation(event){
         document.querySelector('#emailErrorMesage').innerHTML = "E-Mail is invalid.";
         formIsValid = false;
     }
-    if(queryEmail(email)) {
+    if(Database.queryEmail(email)) {
         document.querySelector('#emailErrorMesage').innerHTML = "E-Mail is already taken.";
         formIsValid = false;
     }
@@ -71,11 +68,11 @@ export function checkValidation(event){
 
     if(formIsValid) {
         var profilePicture = document.querySelector("#profileThumbnail").getAttribute('src') || '';
-        var user = new User([username, email, password, nickname, profilePicture, []])
-        addUser(user);
-        // not the right way to do it !!!!!!!
-        window.location.href = '/chat'
+        var user = new Database.User({username, email, password, nickname, profilePicture})
+        Database.Server.addUser(user);
     }
+
+    Database.Server.getUsers();
 }
 
 //Gets user object and adds it to the DB

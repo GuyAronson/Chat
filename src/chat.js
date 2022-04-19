@@ -1,13 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import {getUsers} from './Data Base/DataBase';
+import { Database } from './Database'
+import { useLocation } from 'react-router-dom'
 
-class Chat extends React.Component{
-    render(){
-        return(
-            <h1>This is the chat!{getUsers().map(user => console.log(user))}</h1>
-        );
+export const Chat = () => {
+    const location = useLocation();
+    if (!location.state) {
+        const users = location.state?.users;
+        Database.Server.users = users;
     }
+    return (
+        <h1>This is the chat!{Database.Server.getUsers().map(user => console.log(user))}</h1>
+    );
 }
-
-export default Chat;

@@ -5,7 +5,8 @@ import Chat from './chat'
 import {
   BrowserRouter as Router,
   Routes,
-  Route
+  Route,
+  Redirect
 } from "react-router-dom";
 
 
@@ -17,7 +18,7 @@ function App() {
           <Route path="/">
             <Redirect to="/register"/>
           </Route>
-          <Route path="/register" component={RegisterPage} />
+          <Route path="/register" component={<RegisterPage />} />
           <Route path="/chat" component={Chat} />
       </Routes>
     </Router>
