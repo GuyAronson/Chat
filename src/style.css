@@ -98,3 +98,49 @@ transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) sk
 .thumbnail:hover {
   box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }
+
+#hello{
+  position: absolute;
+  top:0;
+  right:0;
+  margin-right: 11rem;
+  margin-top: 1rem;
+  font-weight: 600;
+  padding: 8px;
+  border: 2px solid black;
+  background-color: #D5E2D6;
+}
+
+#container-chat{
+  position: absolute;
+  left:35%;
+  width:40%;
+  top:25%;
+  background-color: #ffe1b5;
+}
+
+#container-recipients{
+  position: absolute;
+  left:20%;
+  width:20%;
+  top:25%;
+  /* background-color: #ffe1b5; */
+}
+
+.icon{
+  position: absolute;
+  font-size: 1.5rem;
+  top:0;
+  right:10px;
+  cursor: pointer;
+}
+.logout{
+  position: absolute;
+  top:0;
+  right:0;
+  margin-right: 4rem;
+  margin-top: 1rem;
+  font-weight: 600;
+  padding: 8px;
+  border: 2px solid black; 
+}
