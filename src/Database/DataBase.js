@@ -49,4 +49,8 @@ export class DataBase {
         const userChats = DataBase.chats.filter(chat => chat.userID2 === username || chat.userID2 === username);
         return userChats;
     }
+    static getUserByID(username) {
+        const user = DataBase.users.find(user => user._username === username)
+        return user;
+    }
 }
