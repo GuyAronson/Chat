@@ -38,7 +38,7 @@ export function checkValidation(event){
         document.querySelector('#usernameErrorMessage').innerHTML = "Username is invalid.";
         formIsValid = false;
     }
-    if (Database.queryUsername(username)) {
+    if (Database.Server.queryUserName(username)) {
         document.querySelector('#usernameErrorMessage').innerHTML = "Username is already taken.";
         formIsValid = false;
     }
@@ -47,7 +47,7 @@ export function checkValidation(event){
         document.querySelector('#emailErrorMesage').innerHTML = "E-Mail is invalid.";
         formIsValid = false;
     }
-    if(Database.queryEmail(email)) {
+    if(Database.Server.queryEmail(email)) {
         document.querySelector('#emailErrorMesage').innerHTML = "E-Mail is already taken.";
         formIsValid = false;
     }
@@ -72,7 +72,7 @@ export function checkValidation(event){
         Database.Server.addUser(user);
     }
 
-    Database.Server.getUsers();
+    return Database.Server.getUsers();
 }
 
 //Gets user object and adds it to the DB

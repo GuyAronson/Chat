@@ -11,12 +11,13 @@ export const Register = () => {
     const onSubmit = (event) => {
         event.preventDefault()
         const users = checkValidation(event)
+        console.log(users);
         // pass the users to the chat page
         navigate('Chat', {state:{users}})
     }
     return(
         <>
-        <form onSubmit={onSubmit()}>
+        <form onSubmit={onSubmit}>
             <h2 className="topic">Register</h2>
             <UsernameInput />
             {/* email input */}

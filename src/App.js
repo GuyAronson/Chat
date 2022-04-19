@@ -19,7 +19,7 @@ function App() {
             <Redirect to="/register"/>
           </Route>
           <Route path="/register" component={<RegisterPage />} />
-          <Route path="/chat" component={Chat} />
+          <Route path="/chat" component={<Chat />} />
       </Routes>
     </Router>
   </div>

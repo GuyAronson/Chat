@@ -1,9 +1,10 @@
 import React from 'react';
-import { Database } from './Database'
+import { Database } from './Database/index'
 import { useLocation } from 'react-router-dom'
 
 export const Chat = () => {
     const location = useLocation();
+    console.log(location);
     if (!location.state) {
         const users = location.state?.users;
         Database.Server.users = users;

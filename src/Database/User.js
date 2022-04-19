@@ -1,5 +1,5 @@
 export class User {
-    constructor(username, email, password, nickname, picture="", chats=[]) {
+    constructor({username, email, password, nickname, picture="", chats=[]}) {
         this._username = username;
         this._email = email;
         this._password = password;

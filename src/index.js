@@ -11,7 +11,7 @@ root.render(<BrowserRouter>
     <Routes>
           <Route exact path="/" element={<RegisterPage />} />
           <Route path="register" element={<RegisterPage />} />
-          <Route path="chat" element={<Chat/>} />
+          <Route path="chat" element={<Chat/>} />  
       </Routes>
   </BrowserRouter>)
 
