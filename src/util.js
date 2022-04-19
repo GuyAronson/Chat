@@ -1,5 +1,5 @@
 import ProfilePicInput from './Register-login/ProfiePicInput';
-import { setLoggedUser, getLoggedUser } from './Chat/chat';
+import { setLoggedUser, getLoggedUser } from './ChatComponents/ChatPage';
 import {DataBase} from './Database/DataBase';
 
 

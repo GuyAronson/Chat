@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 import { useState } from 'react';
 import { Navigate } from 'react-router';
-import { getLoggedUser, setLoggedUser } from '../Chat/chat.js';
+import { getLoggedUser, setLoggedUser } from '../ChatComponents/ChatPage.js';
 import { DataBase } from '../Database/DataBase.js';
 
 

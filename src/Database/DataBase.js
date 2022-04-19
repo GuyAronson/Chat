@@ -6,7 +6,9 @@ export class DataBase {
     static users = [
         new User({ username: "idan",  email: "idanziv7@gmail.com",password: "12",  nickname:"LazY", chats:["1"]}),
         new User({username:"guy", email: "guy@walla.co.il", password: "12", nickname: "guyush",
-                chats:["1","2"]})
+                chats:["1","2"]}),
+        new User({username:"foo", email: "foo@kaka.co.il", password: "12", nickname: "foofi",
+        chats:["2"]}),
     ];
     static chats = [
         new Chat({messages:[
@@ -58,22 +60,25 @@ export class DataBase {
         return DataBase.users;
     }
     static getChats(username) {
-        const userChats = DataBase.chats.filter(chat => chat.userID1() === username || chat.userID2() === username);
+        const userChats = DataBase.chats.filter(chat => (chat.userID1 === username || chat.userID2 === username));
         return userChats;
     }
-<<<<<<< HEAD
-    
+    // Returns user object by username
     static getUserByID(username){
         const user = DataBase.users.find(user=> user._username === username);
         return user;
     }
+    // Returns chat by chat id
+    static getChatByID(chatID){
+        const chat = DataBase.chats.find(chat=> chat._chatID === chatID);
+        return chat;
+    }
+    static getChatByBothUsers(username1, username2){
+        let chatsUser1 = this.getChats(username1);
+        const desiredChat = chatsUser1.find(chat=> chat._userID1 == username2 || chat._userID2 == username2);
+
+        return desiredChat;
+    }
 }
 
 export default DataBase;
-=======
-    static getUserByID(username) {
-        const user = DataBase.users.find(user => user._username === username)
-        return user;
-    }
-}
->>>>>>> 8c0d4d4ba86bab57e100c576296af0cd9ca25a75

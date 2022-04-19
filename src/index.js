@@ -5,18 +5,18 @@ import ReactDOM from 'react-dom/client';
 import './style.css'
 import { BrowserRouter, Routes, Route} from "react-router-dom";
 import RegisterPage from './Register-login/registerPage.js';
-import Chat from './Chat/chat'
+import ChatPage from './ChatComponents/ChatPage'
 import LoginPage from './Register-login/loginPage';
 // import {users, getLoggedUser ,details} from './users';
 import Layout from './Layout';
 import NotFound404 from './NotFound404';
 // import AddChat from './Chat/AddChat.js'
-import { getLoggedUser } from './Chat/chat.js';
+import { getLoggedUser } from './ChatComponents/ChatPage.js';
 
 const root = ReactDOM.createRoot(document.querySelector('#root'));
 function CanMoveToChat() {
     if(getLoggedUser())
-        return <Chat/>;
+        return <ChatPage/>;
     else
         return <NotFound404/>;
 }

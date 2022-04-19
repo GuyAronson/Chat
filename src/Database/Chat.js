@@ -4,14 +4,15 @@
  */
 import {Message} from './Message'
 export class Chat {
-    constructor(messages, userID1, userID2, chatID='') {
+    constructor({messages, userID1, userID2, chatID=''}) {
         if(chatID)
             this._chatID = chatID;
         else
             this._chatID = this.generatRandomID();
-        this._messages = [...messages];
+        // this._messages = [...messages];
         this._userID1 = userID1;
         this._userID2 = userID2;
+        this._messages = messages;
     }
     get userID1() { return this._userID1;}
     get userID2() { return this._userID2;}

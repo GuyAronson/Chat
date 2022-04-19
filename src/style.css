@@ -144,3 +144,13 @@ transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) sk
   padding: 8px;
   border: 2px solid black; 
 }
+
+.chat-item{
+  cursor: pointer;
+}
+
+#chat-body{
+  background-color: lightyellow;
+  width: 100%;
+  height: 35rem;
+}
