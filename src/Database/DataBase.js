@@ -75,7 +75,7 @@ export class DataBase {
     }
     static getChatByBothUsers(username1, username2){
         let chatsUser1 = this.getChats(username1);
-        const desiredChat = chatsUser1.find(chat=> chat._userID1 == username2 || chat._userID2 == username2);
+        const desiredChat = chatsUser1.find(chat=> chat._userID1 === username2 || chat._userID2 === username2);
 
         return desiredChat;
     }

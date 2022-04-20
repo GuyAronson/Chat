@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import RegisterPage from './registerPage.js';
 import Chat from './chat'
@@ -15,7 +14,6 @@ function App() {
     <Router>
       <Routes>
           <Route path="/">
-            <Redirect to="/register"/>
           </Route>
           <Route path="/register" component={RegisterPage} />
           <Route path="/chat" component={Chat} />

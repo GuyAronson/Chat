@@ -145,12 +145,20 @@ transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) sk
   border: 2px solid black; 
 }
 
-.chat-item{
+#chat-item{
   cursor: pointer;
+}
+#chat-item :hover{
+  background-color: #8eb490 ;
+}
+#chat-item :active{
+  background-color: #8eb490 ;
 }
 
 #chat-body{
-  background-color: lightyellow;
+  background-color: lightgrey;
   width: 100%;
   height: 35rem;
 }
+
+/* Messages: */

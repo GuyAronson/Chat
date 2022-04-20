@@ -15,14 +15,14 @@ export default function ChatBody(props){
         messages = DataBase.getChatByBothUsers(props.partner, loggedUsername).messages;
     }
     const RenderMessages = () => {
-        messages.map((msg, index) => {
+        return messages.map((msg, index) => {
             let isMyMessage = loggedUsername === msg.authorID ? true : false;
             return (
-                <div key={'msg_${index}'} className="msg-block">
-                    {
+                <div key={`msg_${index}`} className="msg-block">
+                    {   
                         isMyMessage
-                        ? <MyMessage message={msg} key={index}></MyMessage> :
-                        <TheirMessage message={msg} key={index}></TheirMessage>
+                        ? <MyMessage message={msg}></MyMessage> :
+                        <TheirMessage message={msg}></TheirMessage>
                         
                     }
                 </div>

@@ -11,9 +11,15 @@ export function SidebarList(props){
 
     //Handling a click on a chat in the chats bar on the left
     const handleChatClick = event=>{    
-        // Going down the tree of elements in order to get the username
         if(event.target.tagName == "LI")
-        {    
+        {   
+            //Make the button active
+            let currentActive = document.getElementsByClassName("active");
+            if(currentActive.length)
+                currentActive[0].className = currentActive[0].className.replace(" active", "");
+            event.target.className += " active";
+            
+            // Going down the tree of elements in order to get the username
             let username = event.target.firstChild.firstChild.firstChild;
             console.log(username.data);
             props.chatClick(username.data);
@@ -32,7 +38,7 @@ export function SidebarList(props){
             </li>
             {/* Getting the list of all chats converted into <li></li> */}
             {DataBase.getChats(user._username).map((chat, index) => {
-                    return <li className = 'list-group-item d-flex justify-content-between align-items-start chat-item' key={index} onClick={handleChatClick}>
+                    return <li id="chat-item" className = 'list-group-item d-flex justify-content-between align-items-start' key={index} onClick={handleChatClick}>
                         <div className="ms-2 me-auto">
                             {/* the name of the person chattin with */}
                             <div id='chatPartner'className="fw-bold">{user._username === chat.userID1 ? chat.userID2: chat.userID1}</div>
