@@ -11,7 +11,7 @@ function Register (){
 
     async function handleSubmit(event){
         event.preventDefault();
-        if(await checkSubmitValidation(event)){
+        if(checkSubmitValidation(event)){
             // If the validation succeeded it will navigate to the chat page
             navigate("/chat", { replace: true });
             
