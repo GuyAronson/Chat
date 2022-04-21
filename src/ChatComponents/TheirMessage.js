@@ -5,9 +5,9 @@ export const TheirMessage = props => {
     let data = props.message.data;
     return (
         <div className="their_msg">
-            <span className="author_name">{author}</span>
-            <span className="msg_text">{data}</span>
-            <span className="msg_timeStamp">{time}</span>
+            <div className="author_name">{author}</div>
+            <div className="msg_text">{data}</div>
+            <div className="msg_timeStamp">{time}</div>
         </div>
 
     )

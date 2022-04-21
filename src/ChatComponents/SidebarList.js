@@ -28,7 +28,7 @@ export function SidebarList(props){
 
     return (<>
         {/* The chats list on the left side */}
-        <ul className='list-group'>
+        <ul className='list-group chat-sidebar'>
             <li className = 'list-group-item d-flex justify-content-between'>
                 <div className="ms-2 fw-bold">{user._username}</div>
                 {/* Button to add chats */}
@@ -38,7 +38,7 @@ export function SidebarList(props){
             </li>
             {/* Getting the list of all chats converted into <li></li> */}
             {DataBase.getChats(user._username).map((chat, index) => {
-                    return <li id="chat-item" className = 'list-group-item d-flex justify-content-between align-items-start' key={index} onClick={handleChatClick}>
+                    return <li className = 'list-group-item d-flex justify-content-between align-items-start  chat-item' key={index} onClick={handleChatClick}>
                         <div className="ms-2 me-auto">
                             {/* the name of the person chattin with */}
                             <div id='chatPartner'className="fw-bold">{user._username === chat.userID1 ? chat.userID2: chat.userID1}</div>
