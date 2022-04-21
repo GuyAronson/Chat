@@ -40,8 +40,9 @@ export function SidebarList(props){
                 currentActive[0].className = currentActive[0].className.replace(" active", "");
             event.target.className += " active";
             
-            // Going down the tree of elements in order to get the username
-            let username = event.target.firstChild.firstChild.firstChild;
+            // Going down the tree in order to get the username li->div->div(#chatPartner)
+            let username = event.target.firstChild.childNodes[1].firstChild;
+
             console.log(username.data);
             props.chatClick(username.data);
         }
@@ -59,7 +60,7 @@ export function SidebarList(props){
         {/* The chats list on the left side */}
         <ul className='list-group chat-sidebar'>
             <li className = 'list-group-item d-flex justify-content-between align-items-stretch'>
-                <img className='profile-pic' src="./bro.jpg" alt= "fuck you"/>
+                <img className='profile-pic' src={user.getPicture} alt= "Bruh.."/>
                 <span className="header-username">{user.getUsername}</span>
                 {/* Button to add chats */}
                 <OverlayTrigger trigger="click" placement="bottom" overlay={popoverDown} rootClose={true}>
@@ -69,16 +70,20 @@ export function SidebarList(props){
             {/* Getting the list of all chats converted into <li></li> */}
             {console.log("chats: ", userchats)}
             {userchats.map((chat, index) => {
-                    return <li className = 'list-group-item d-flex justify-content-between align-items-start  chat-item' key={index} onClick={handleChatClick}>
-                        <div className="ms-2 me-auto">
+                    // Getting the partner username -> get his profile pic
+                    let partner = chat._userID1 === user.getUsername? chat.userID2: chat.userID1;
+                    return <li className = 'list-group-item d-flex justify-content-between align-items-start chat-item' key={index} onClick={handleChatClick}>
+                        <div className="me-auto">
+                            {/* profile pic */}
+                            <img className='profile-pic-small' src={DataBase.getUserByID(partner).getPicture} alt= "Bruh.."/>
                             {/* the name of the person chattin with */}
-                            <div id='chatPartner'className="fw-bold">{user._username === chat.userID1 ? chat.userID2: chat.userID1}</div>
-                                {/* Here will go the last message */}
-                                {chat.messages.length ? chat.messages[0].data : ''}
-                            </div>
-                            {/* Here is the timestamp of the last message */}
-                            <span className='position-absolute end-0 bottom-0 m-2'>{chat.messages.length ? chat.messages[0].timeStamp : ''}</span>
-                            <span className="badge bg-primary rounded-pill">1{/* Here will go the num of the updates */}</span>
+                            <div className='chatPartner'>{user._username === chat.userID1 ? chat.userID2: chat.userID1}</div>
+                            {/* Here will go the last message */}
+                            <div className='last-message'>{chat.messages.length ? chat.messages[0].data : ''}</div>
+                        </div>
+                        {/* Here is the timestamp of the last message */}
+                        <span className='position-absolute end-0 bottom-0 m-2 msg_timeStamp'>{chat.messages.length ? chat.messages[0].timeStamp : ''}</span>
+                        <span className="badge bg-primary rounded-pill">1{/* Here will go the num of the updates */}</span>
                         </li>
             })}
         </ul>

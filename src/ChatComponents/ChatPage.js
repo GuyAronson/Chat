@@ -15,7 +15,7 @@ export var setLoggedUser = user =>loggedUser = user;
 
 function ChatPage(){
     const [logout, setLogout] = useState(false);
-    const [chatPartner, setChatPartner] = useState('');
+    const [chatPartner, setChatPartner] = useState(null);
     
     //Function to log out from the chat window - returns to log in
     const Logout = (event) => {
@@ -50,7 +50,7 @@ function ChatPage(){
                 </Col>
                 <Col sm={9} >
                     {/* Chat body */}
-                    {chatPartner && <ChatWindow partner={chatPartner}/>}
+                    <ChatWindow partner={chatPartner}/>
                 </Col>
             </Row>
             </Container>

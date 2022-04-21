@@ -5,28 +5,28 @@ import { Message } from "./Message";
 export class DataBase {
     static users = [
         new User({ username: "idan",  email: "idanziv7@gmail.com",password: "12",  nickname:"LazY",
-                picture:'../../pictures/bro.jpg', chats:["1"]}),
-        new User({username:"guyAronsonTheKing", email: "guy@walla.co.il", password: "12", nickname: "guyush", picture:'',
-                chats:["1","2"]}),
-        new User({username:"foo", email: "foo@kaka.co.il", password: "12", nickname: "foofi",picture:'',
-        chats:["2"]}),
-        new User({username:"Yossi", email: "Yossi@yahoo.co.il", password: "12", nickname: "Yoske",picture:'',
-        chats:[]}),
+                picture:'/pictures/bro2.jpg', chats:["1"]}),
+        new User({username:"guyAronson guyAronson", email: "guy@walla.co.il", password: "12", nickname: "guyush",
+                picture:'/pictures/bro.jpg', chats:["1","2"]}),
+        new User({username:"foo", email: "foo@kaka.co.il", password: "12", nickname: "foofi",
+                picture:'/pictures/bro3.jpg', chats:["2"]}),
+        new User({username:"Yossi", email: "Yossi@yahoo.co.il", password: "12", nickname: "Yoske",
+                picture:'/pictures/bro4.jpg', chats:[]}),
     ];
     static chats = [
         new Chat({messages:[
             new Message({authorID: "idan", time:"15:52", data: "Hey", type:"message"}),
-            new Message({authorID: "guyAronsonTheKing", time:"15:59", data: "Hey bro", type:"message"}),
-            new Message({authorID: "guyAronsonTheKing", time:"16:00", data: "How are you ?", type:"message"}),
+            new Message({authorID: "guyAronson guyAronson", time:"15:59", data: "Hey bro", type:"message"}),
+            new Message({authorID: "guyAronson guyAronson", time:"16:00", data: "How are you ?", type:"message"}),
             new Message({authorID: "idan", time:"16:01", data: "Good", type:"message"}),
-        ], userID1: "guyAronsonTheKing", userID2: "idan", chatID: "1"}),
+        ], userID1: "guyAronson guyAronson", userID2: "idan", chatID: "1"}),
         new Chat({messages:[
-            new Message({authorID: "guyAronsonTheKing", time:"15:58", data: "wtf", type:"message"}),
-            new Message({authorID: "guyAronsonTheKing", time:"15:58", data: "Hey broooo", type:"message"}),
+            new Message({authorID: "guyAronson guyAronson", time:"15:58", data: "wtf", type:"message"}),
+            new Message({authorID: "guyAronson guyAronson", time:"15:58", data: "Hey broooo", type:"message"}),
             new Message({authorID: "foo", time:"15:52", data: "Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey ", type:"message"}),
             new Message({authorID: "foo", time:"15:52", data: "adssadsd", type:"message"}),
             new Message({authorID: "foo", time:"15:52", data: "blablabla", type:"message"}),
-        ], userID1: "guyAronsonTheKing", userID2: "foo",chatID: "2"})
+        ], userID1: "guyAronson guyAronson", userID2: "foo",chatID: "2"})
     ];
     static addUser(new_user) {
         DataBase.users.push(new_user);

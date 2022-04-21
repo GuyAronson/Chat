@@ -10,7 +10,7 @@ export function ChatWindow(props){
     var messages = [];
     var loggedUsername = '';
     if(props.partner){
-        loggedUsername = getLoggedUser()._username;
+        loggedUsername = getLoggedUser().getUsername;
         messages = DataBase.getChatByBothUsers(props.partner, loggedUsername).messages;
     }
     const RenderMessages = () => {
@@ -42,7 +42,9 @@ export function ChatWindow(props){
             <Card>
                 <Card.Header>
                     {/* Need to add a profile pic */}
-                    Chat with {props.partner}
+                    {props.partner &&
+                    <div><img className='profile-pic' src={DataBase.getUserByID(props.partner).getPicture} alt= "Bruh.."/>
+                    <span id="header-partner-uname">{props.partner}</span></div>}
                 </Card.Header>
             </Card>
 
