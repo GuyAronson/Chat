@@ -8,7 +8,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import DataBase from '../Database/DataBase.js';
 import { useState } from 'react';
 
-var loggedUser = DataBase.getUserByID("guy");
+var loggedUser = DataBase.getUserByID("guyAronsonTheKing");
 // var loggedUser = null;
 export var getLoggedUser = () => loggedUser;
 export var setLoggedUser = user =>loggedUser = user;
@@ -22,6 +22,7 @@ function ChatPage(){
         setLoggedUser(null);
         console.log("user changed");
         setLogout(true);
+        setChatPartner('');
     }
 
     // Function that will execute once the user clicks on a chat - passed to SidebarList
@@ -49,7 +50,7 @@ function ChatPage(){
                 </Col>
                 <Col sm={9} >
                     {/* Chat body */}
-                    <ChatWindow partner={chatPartner}/>
+                    {chatPartner && <ChatWindow partner={chatPartner}/>}
                 </Col>
             </Row>
             </Container>

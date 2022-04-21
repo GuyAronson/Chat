@@ -1,6 +1,7 @@
 import ProfilePicInput from './Register-login/ProfiePicInput';
 import { setLoggedUser, getLoggedUser } from './ChatComponents/ChatPage';
 import {DataBase} from './Database/DataBase';
+import { User } from "./Database/User"
 
 
 /* Function gets email and validate it
@@ -45,16 +46,20 @@ export function checkSubmitValidation(event){
         document.querySelector('#usernameErrorMessage').innerHTML = "Username is invalid.";
         formIsValid = false
     }
+    else if(DataBase.queryUserName(username)){
+        document.querySelector('#usernameErrorMessage').innerHTML = "Username already exists!.";
+        formIsValid = false
+    }
 
     if(!email || !validateEmail(email)) {
         document.querySelector('#emailErrorMesage').innerHTML = "E-Mail is invalid.";
         formIsValid = false
     }
 
-    if(!password || !validatePassword(password)) {
-        document.querySelector('#passErrorMesage').innerHTML = "Password is invalid. Need to be greater then 7 characters";
-        formIsValid = false
-    }
+    // if(!password || !validatePassword(password)) {
+    //     document.querySelector('#passErrorMesage').innerHTML = "Password is invalid. Need to be greater then 7 characters";
+    //     formIsValid = false
+    // }
 
     if(!matchPassword || password !== matchPassword) {
         document.querySelector('#passConfirmErrorMesage').innerHTML = "Passwords does not match";
@@ -66,14 +71,11 @@ export function checkSubmitValidation(event){
     }
 
     if(formIsValid) {
-        let profilePicture = document.querySelector("#profileThumbnail").getAttribute('src') || '';
-        let user = {
-            username,// username: blah
-            email,
-            password,
-            nickname,
-            profilePicture,
-        }
+        let profilePicture = document.querySelector("#profileThumbnail").src.toString();
+        if(!profilePicture)
+            profilePicture = '';
+        console.log("type of profilePicture: ", typeof(profilePicture));
+        let user = new User({username: username, email: email,password: password,  nickname: nickname ,picture: profilePicture});
         DataBase.addUser(user);
         setLoggedUser(user);
         console.log(getLoggedUser());

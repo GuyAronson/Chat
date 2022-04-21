@@ -21,7 +21,7 @@ export class Chat {
 
     // this function will add messages to the chat
     addMessage(message, type, authorID) {
-        this.messages.shift(
+        this.messages.push(
             new Message({authorID, time: Date.now, message, type})
         );
     };

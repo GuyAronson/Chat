@@ -1,10 +1,12 @@
+import DataBase from "./DataBase";
+
 export class User {
-    constructor({username, email, password, nickname, picture="", chats=[]}) {
+    constructor({username, email, password, nickname, picture, chats=[]}) {
         this._username = username;
         this._email = email;
         this._password = password;
         this._nickname = nickname;
-        this._picture = picture;
+        this._picture = picture ? picture: '';
         this._chats = chats;
     }
     get getUsername() {
@@ -21,5 +23,11 @@ export class User {
     }
     get getChats() {
         return this._chats;
+    }
+    get getPicture(){
+        return this._picture;
+    }
+    addChat(chatID){
+        this._chats.push(chatID);
     }
 }

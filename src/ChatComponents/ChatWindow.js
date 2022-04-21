@@ -56,8 +56,8 @@ export function ChatWindow(props){
 
             {/* ChatFooter*/}
             <Card id ='chat-footer'>
-                <OverlayTrigger trigger="click" placement="top" overlay={popoverTop}>
-                    <button className="btn btn-light upload-popover"><i class="bi bi-arrow-bar-up"/></button>
+                <OverlayTrigger trigger="click" placement="top" overlay={popoverTop} rootClose={true}>
+                    <button className="btn btn-light upload-popover"><i className="bi bi-arrow-bar-up"/></button>
                 </OverlayTrigger>
                 <input className="form-control msg-input" type='text' placeholder='Type your message here...'/>
                 <button className="btn btn-primary send-button">

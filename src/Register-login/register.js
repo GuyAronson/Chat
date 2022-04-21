@@ -5,6 +5,7 @@ import PasswordInput from './PasswordInput.js';
 import UsernameInput from './UsernameInput.js';
 import {checkSubmitValidation} from '../util.js';
 import {Link ,useNavigate } from 'react-router-dom';
+import DataBase from '../Database/DataBase.js';
 
 function Register (){ 
     let navigate = useNavigate();
@@ -13,8 +14,7 @@ function Register (){
         event.preventDefault();
         if(checkSubmitValidation(event)){
             // If the validation succeeded it will navigate to the chat page
-            navigate("/chat", { replace: true });
-            
+            navigate(`/chat/${event.target.usernameInput.value}`, { replace: true });
         }
     }
 

@@ -4,23 +4,30 @@ import { Message } from "./Message";
 
 export class DataBase {
     static users = [
-        new User({ username: "idan",  email: "idanziv7@gmail.com",password: "12",  nickname:"LazY", chats:["1"]}),
-        new User({username:"guy", email: "guy@walla.co.il", password: "12", nickname: "guyush",
+        new User({ username: "idan",  email: "idanziv7@gmail.com",password: "12",  nickname:"LazY",
+                picture:'../../pictures/bro.jpg', chats:["1"]}),
+        new User({username:"guyAronsonTheKing", email: "guy@walla.co.il", password: "12", nickname: "guyush", picture:'',
                 chats:["1","2"]}),
-        new User({username:"foo", email: "foo@kaka.co.il", password: "12", nickname: "foofi",
+        new User({username:"foo", email: "foo@kaka.co.il", password: "12", nickname: "foofi",picture:'',
         chats:["2"]}),
+        new User({username:"Yossi", email: "Yossi@yahoo.co.il", password: "12", nickname: "Yoske",picture:'',
+        chats:[]}),
     ];
     static chats = [
         new Chat({messages:[
-            new Message({authorID: "guy", time:"15:59", data: "Hey bro", type:"message"}),
-            new Message({authorID: "idan", time:"15:52", data: "Hey", type:"message"})
-        ], userID1: "guy", userID2: "idan", chatID: "1"}),
+            new Message({authorID: "idan", time:"15:52", data: "Hey", type:"message"}),
+            new Message({authorID: "guyAronsonTheKing", time:"15:59", data: "Hey bro", type:"message"}),
+            new Message({authorID: "guyAronsonTheKing", time:"16:00", data: "How are you ?", type:"message"}),
+            new Message({authorID: "idan", time:"16:01", data: "Good", type:"message"}),
+        ], userID1: "guyAronsonTheKing", userID2: "idan", chatID: "1"}),
         new Chat({messages:[
-            new Message({authorID: "guy", time:"15:58", data: "wtf", type:"message"}),
-            new Message({authorID: "foo", time:"15:52", data: "plupluplu", type:"message"})
-        ], userID1: "guy", userID2: "foo",chatID: "2"})
+            new Message({authorID: "guyAronsonTheKing", time:"15:58", data: "wtf", type:"message"}),
+            new Message({authorID: "guyAronsonTheKing", time:"15:58", data: "Hey broooo", type:"message"}),
+            new Message({authorID: "foo", time:"15:52", data: "Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey ", type:"message"}),
+            new Message({authorID: "foo", time:"15:52", data: "adssadsd", type:"message"}),
+            new Message({authorID: "foo", time:"15:52", data: "blablabla", type:"message"}),
+        ], userID1: "guyAronsonTheKing", userID2: "foo",chatID: "2"})
     ];
-
     static addUser(new_user) {
         DataBase.users.push(new_user);
     }
@@ -75,9 +82,16 @@ export class DataBase {
     }
     static getChatByBothUsers(username1, username2){
         let chatsUser1 = this.getChats(username1);
-        const desiredChat = chatsUser1.find(chat=> chat._userID1 === username2 || chat._userID2 === username2);
+        const desiredChat = chatsUser1.find(chat=> chat._userID1 == username2 || chat._userID2 == username2);
 
         return desiredChat;
+    }
+    //The function creates new chat, add it to the system and return the chat ID
+    static createNewChat(messages, userID1, userID2, chatID=''){
+        let chat = new Chat({messages, userID1, userID2, chatID});
+        this.chats.push(chat);
+        console.log("all chats: ", this.chats);
+        return chat.id;
     }
 }
 

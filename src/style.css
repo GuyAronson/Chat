@@ -131,14 +131,6 @@ transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) sk
   top:25%;
   /* background-color: #ffe1b5; */
 }
-
-.icon{
-  position: absolute;
-  font-size: 1.5rem;
-  top:0;
-  right:10px;
-  cursor: pointer;
-}
 .logout{
   position: absolute;
   top:0;
@@ -157,6 +149,27 @@ transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) sk
 .chat-item:hover{
   background-color: rgb(245,245,245);
 }
+.icon{
+  font-size: 1.5rem;
+}
+.list-group-item .icon-button{
+  top:0;
+  right:0;
+  padding:0;
+  width:30px;
+  height:30px;
+}
+.header-username{
+  font-weight: bold;
+  padding: 2% 5%;
+  font-size: 20px;
+  /* Breaks the word if it's too long */
+  overflow: hidden;
+  overflow-wrap: break-word;
+}
+.list-group-item{
+  padding: 8px 8px;
+}
 .list-group-item.active{
   color:black;
   background-color: rgb(220,220,220);
@@ -170,6 +183,20 @@ transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) sk
   border: 1px solid rgb(210,210,210);
   padding:0;
   margin-right:-50px;
+}
+#insert-chat-popover{
+  padding:10px;
+  text-align-last: center;
+}
+#insert-chat-popover button, input{
+  margin-top:5px;
+}
+.profile-pic{
+  left:0;
+  border: 3px solid #ddd; /* Gray border */
+  border-radius: 50%;  /* Rounded border */
+  width: 70px; /* Set a small width */
+  height: 70px;
 }
 
 /* chat iteself */
