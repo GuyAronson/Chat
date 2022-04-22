@@ -21,8 +21,11 @@ export class Chat {
 
     // this function will add messages to the chat
     addMessage(message, type, authorID) {
+        let date = new Date();
+        let now = date.getHours() +":"+ date.getMinutes();
         this.messages.push(
-            new Message({authorID, time: Date.now, message, type})
+            // new Message({authorID: authorID, time: new Date(), data: message,type: type})
+            new Message({authorID: authorID, time: now, data: message,type: type})
         );
     };
     generatRandomID() {

@@ -11,8 +11,23 @@ export class DataBase {
         new User({username:"foo", email: "foo@kaka.co.il", password: "12", nickname: "foofi",
                 picture:'/pictures/bro3.jpg', chats:["2"]}),
         new User({username:"Yossi", email: "Yossi@yahoo.co.il", password: "12", nickname: "Yoske",
-                picture:'/pictures/bro4.jpg', chats:[]}),
+                picture:'/pictures/bro4.png', chats:[]}),
     ];
+    // static chats = [
+    //     new Chat({messages:[
+    //         new Message({authorID: "idan", time:  Date(2022,3,22,15,59), data: "Hey", type:"message"}),
+    //         new Message({authorID: "guyAronson guyAronson", time: Date(2022,3,22,15,59), data: "Hey bro", type:"message"}),
+    //         new Message({authorID: "guyAronson guyAronson", time:  Date(2022,3,22,16,0), data: "How are you ?", type:"message"}),
+    //         new Message({authorID: "idan", time: Date(2022,3,22,16,1), data: "Good", type:"message"}),
+    //     ], userID1: "guyAronson guyAronson", userID2: "idan", chatID: "1"}),
+    //     new Chat({messages:[
+    //         new Message({authorID: "guyAronson guyAronson", time:  Date(2022,3,22,15,59), data: "wtf", type:"message"}),
+    //         new Message({authorID: "guyAronson guyAronson", time:  Date(2022,3,22,15,58), data: "Hey broooo", type:"message"}),
+    //         new Message({authorID: "foo", time: Date(2022,3,22,15,52), data: "Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey ", type:"message"}),
+    //         new Message({authorID: "foo", time: Date(2022,3,22,15,52), data: "adssadsd", type:"message"}),
+    //         new Message({authorID: "foo", time: Date(2022,3,22,15,52), data: "blablabla", type:"message"}),
+    //     ], userID1: "guyAronson guyAronson", userID2: "foo",chatID: "2"})
+    // ];
     static chats = [
         new Chat({messages:[
             new Message({authorID: "idan", time:"15:52", data: "Hey", type:"message"}),
