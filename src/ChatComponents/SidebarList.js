@@ -18,7 +18,7 @@ export function SidebarList({user, chats, changeChat}){
     );
     const handleClickOnChatBox = event =>{
         // Getting the partner username from the element
-        if(event.target.tagName == "LI"){
+        if(event.target.tagName === "LI"){
             const partnerUsername = event.target.firstChild.childNodes[1].firstChild.data;
             const newChat = Database.Server.getChatByBothUsers(user.getUsername, partnerUsername);
             changeChat(newChat);

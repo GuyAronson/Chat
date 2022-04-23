@@ -41,18 +41,24 @@ function ChatPage(){
     }, [selectChat, userChats])
 
     // method to handle sending a message
-    const pushMessage = ()=> {
+    const pushTextMessage = ()=> {
         // find the chat index
         // const chat = selectChat? Database.Server.getChatByID(selectChat.id) : undefined;
         // first check if the data is not empty
         if (selectChat && input) {
             // add the message
-            selectChat.addMessage(input, "message", currentUser.getUsername);
+            selectChat.addMessage(input, "text", currentUser.getUsername);
             // update the whole chats (to invoke useEffect)
             setUserChats(Database.Server.getChats(currentUser.getUsername));
             // reset the input
             setInput('');
         }
+    }
+    const pushImageMessage = (url) => {
+        if (selectChat && url) {
+            selectChat.addMessage(url, "image", currentUser.getUsername);
+            setUserChats(Database.Server.getChats(currentUser.getUsername));
+        } 
     }
     //Function to log out from the chat window - returns to login
     const Logout = (event) => {
@@ -90,7 +96,8 @@ function ChatPage(){
                 <Col sm={8}>
                     {/* Chat body */}
                     <ChatWindow messages={currentMessages} input={input} changeInput={setInput} 
-                        send={pushMessage} chat={selectChat} user={currentUser}/>
+                        sendText={pushTextMessage} chat={selectChat} user={currentUser}
+                        sendImage={pushImageMessage}/>
                 </Col>
                 
             </Row>
