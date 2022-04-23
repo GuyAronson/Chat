@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Container, Card,OverlayTrigger, Button, Popover } from 'react-bootstrap';
 import ReactDOM from 'react-dom/client';
 import { getLoggedUser } from './ChatPage';
@@ -12,6 +12,10 @@ import { MyMessage } from './MyMessage';
 // }
 
 export function ChatWindow(props){
+    const endDiv = useRef(null);
+    useEffect(() => {
+        endDiv.current.scrollIntoView();
+    })
     const loggedUsername = getLoggedUser().getUsername;
     const chat = DataBase.getChatByBothUsers(props.partner, getLoggedUser().getUsername);
     const messages = chat ? chat.messages : [];
@@ -82,7 +86,7 @@ export function ChatWindow(props){
                 <Card.Body id='chat-body'>
                     {RenderMessages()}
                     {/* {scrollBottom("#chat-body")} */}
-                    <div id='chat-end'></div>
+                    <div id='chat-end' ref={endDiv} style={{float: 'right', clear: 'both'}}></div>
                 </Card.Body>
             </Card>
 
