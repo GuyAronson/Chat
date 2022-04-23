@@ -22,7 +22,9 @@ export class Chat {
     // this function will add messages to the chat
     addMessage(message, type, authorID) {
         let date = new Date();
-        let now = date.getHours() +":"+ date.getMinutes();
+        let hour = date.getHours().toString().length === 1 ? "0"+date.getHours() : date.getHours();
+        let mins = date.getMinutes().toString().length === 1 ? "0"+date.getMinutes() : date.getMinutes();
+        let now = hour +":"+ mins;
         this.messages.push(
             // new Message({authorID: authorID, time: new Date(), data: message,type: type})
             new Message({authorID: authorID, time: now, data: message,type: type})

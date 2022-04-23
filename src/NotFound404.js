@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactDOM from 'react-dom/client';
+import Banner from './banner.js';
 
 function NotFound404(){
     
