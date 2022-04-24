@@ -4,50 +4,50 @@ import { useState } from "react";
 
 
 export const ImageUpload = ({sendMessage}) => {
-    
     const [showModal, setShowModal] = useState(false);
+    const [imageURL, setImageURL] = useState();
     const handleCloseModal = () => {
         setShowModal(false);
     }
     const handleShowModal = () => {
         setShowModal(true);
     }
-    const [imageURL, setImageURL] = useState();
-
-    const uploadImage = event => {
-        setImageURL(URL.createObjectURL(event.target.files[0]));
-        console.log(imageURL);
-    }
-    const handleClickOnSend = () => {
+    const uploadImage = e => {
+        setImageURL(URL.createObjectURL(e.target.files[0]));
+      }
+    const handleSendImage = () => {
         if (imageURL != null) {
             sendMessage(imageURL);
             setShowModal(false);
         }
     }
     return(
-        <>
-            <button className="btn btn-sm" onClick={handleShowModal}>
-                <i className="bi bi-camera-fill"/> 
-            </button>
-            <Modal show={showModal} onHide={handleCloseModal}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Choose an Image to Upload</Modal.Title>
-                </Modal.Header>
-                <ModalBody>
-                    <Form>
-                        <Form.Group className="mb-3" >
-                            <Form.Control 
-                                type="file"
-                                onClick={uploadImage}
-                                accept="image/*"
-                            />
-                        </Form.Group>
-                    </Form>
-                </ModalBody>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClickOnSend}>Send</Button>
-                </Modal.Footer>
-            </Modal> 
-        </>
+           <>
+    <button className="btn btn-sm" onClick={handleShowModal}>
+    <i className="bi bi-image"></i>
+  </button>
+
+    <Modal show={showModal} onHide={handleCloseModal}>
+      <Modal.Header closeButton>
+        <Modal.Title>Upload Image</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <Form > 
+          <Form.Group className="mb-3">
+            <Form.Control
+              type="file"
+              onChange={uploadImage}
+              accept="image/*"
+            />
+          </Form.Group>
+        </Form>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={handleSendImage}>
+          Send
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  </>
     )
 }

@@ -70,11 +70,11 @@ export function ChatWindow({messages, input, changeInput, sendText, sendImage, c
                         <i className="bi bi-paperclip"></i>
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                        <Dropdown.Item><i class="bi bi-mic-fill"/> Audio</Dropdown.Item>
-                        <Dropdown.Item>
+                        <Dropdown.Item href="#/action-1" ><i className="bi bi-mic-fill"/> Audio</Dropdown.Item>
+                        <Dropdown.Item href="#/action-2" >
                             <ImageUpload sendMessage={sendImage}/>Image
                         </Dropdown.Item>
-                        <Dropdown.Item><i class="bi bi-camera-video-fill"/> Video</Dropdown.Item>
+                        <Dropdown.Item href="#/action-3" ><i class="bi bi-camera-video-fill"/> Video</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
                 <input 
