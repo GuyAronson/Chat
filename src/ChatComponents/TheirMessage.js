@@ -13,4 +13,24 @@ export const TheirMessage = props => {
 
         )
     }
+
+    if (type === "image") {
+        return (
+            <>
+                <div className="their_msg">
+                    <img src={data} className="msg_img" alt="null"/>
+                    <div className="msg_timeStamp">  </div>
+                </div>
+            </>
+        )
+    }
+
+    if (type === "video") {
+        return (
+            <div className="their_msg">
+                <video src={data} className="msg_vid" controls/>
+                <div className="msg_timeStamp">{time}</div>
+            </div>
+        )
+    }
 }

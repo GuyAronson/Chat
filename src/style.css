@@ -285,8 +285,13 @@ transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) sk
 .my_msg .msg_timeStamp{
   float: right;
 }
+
 .msg_img {
-  max-width: 100px;  
+  max-width: 300px;
+}
+
+.msg_vid {
+  max-width: 300px;
 }
 .their_msg{
   border: 2px solid #666;

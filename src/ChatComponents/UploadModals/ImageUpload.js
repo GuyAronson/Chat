@@ -15,7 +15,7 @@ export const ImageUpload = ({sendMessage}) => {
     const uploadImage = e => {
         setImageURL(URL.createObjectURL(e.target.files[0]));
       }
-    const handleSendImage = () => {
+    const handleOnClick = () => {
         if (imageURL != null) {
             sendMessage(imageURL);
             setShowModal(false);
@@ -43,7 +43,7 @@ export const ImageUpload = ({sendMessage}) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={handleSendImage}>
+        <Button variant="secondary" onClick={handleOnClick}>
           Send
         </Button>
       </Modal.Footer>

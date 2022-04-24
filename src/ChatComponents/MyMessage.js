@@ -23,4 +23,13 @@ export const MyMessage = props => {
             </>
         )
     }
+
+    if (type === "video") {
+        return (
+            <div className="my_msg">
+                <video src={data} className="msg_vid" controls/>
+                <div className="msg_timeStamp">{time}</div>
+            </div>
+        )
+    }
 }   

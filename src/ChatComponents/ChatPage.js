@@ -60,6 +60,12 @@ function ChatPage(){
             setUserChats(Database.Server.getChats(currentUser.getUsername));
         } 
     }
+    const pushVideoMessage = (url) => {
+        if (selectChat && url) {
+            selectChat.addMessage(url, "video", currentUser.getUsername);
+            setUserChats(Database.Server.getChats(currentUser.getUsername));
+        }
+    }
     //Function to log out from the chat window - returns to login
     const Logout = (event) => {
         setLoggedUser(null);
@@ -97,7 +103,7 @@ function ChatPage(){
                     {/* Chat body */}
                     <ChatWindow messages={currentMessages} input={input} changeInput={setInput} 
                         sendText={pushTextMessage} chat={selectChat} user={currentUser}
-                        sendImage={pushImageMessage}/>
+                        sendImage={pushImageMessage} sendVideo={pushVideoMessage}/>
                 </Col>
                 
             </Row>
