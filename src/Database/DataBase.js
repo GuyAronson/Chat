@@ -13,34 +13,19 @@ export class DataBase {
         new User({username:"Yossi", email: "Yossi@yahoo.co.il", password: "12", nickname: "Yoske",
                 picture:'/pictures/bro4.png', chats:[]}),
     ];
-    // static chats = [
-    //     new Chat({messages:[
-    //         new Message({authorID: "idan", time:  Date(2022,3,22,15,59), data: "Hey", type:"message"}),
-    //         new Message({authorID: "guyAronson guyAronson", time: Date(2022,3,22,15,59), data: "Hey bro", type:"message"}),
-    //         new Message({authorID: "guyAronson guyAronson", time:  Date(2022,3,22,16,0), data: "How are you ?", type:"message"}),
-    //         new Message({authorID: "idan", time: Date(2022,3,22,16,1), data: "Good", type:"message"}),
-    //     ], userID1: "guyAronson guyAronson", userID2: "idan", chatID: "1"}),
-    //     new Chat({messages:[
-    //         new Message({authorID: "guyAronson guyAronson", time:  Date(2022,3,22,15,59), data: "wtf", type:"message"}),
-    //         new Message({authorID: "guyAronson guyAronson", time:  Date(2022,3,22,15,58), data: "Hey broooo", type:"message"}),
-    //         new Message({authorID: "foo", time: Date(2022,3,22,15,52), data: "Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey ", type:"message"}),
-    //         new Message({authorID: "foo", time: Date(2022,3,22,15,52), data: "adssadsd", type:"message"}),
-    //         new Message({authorID: "foo", time: Date(2022,3,22,15,52), data: "blablabla", type:"message"}),
-    //     ], userID1: "guyAronson guyAronson", userID2: "foo",chatID: "2"})
-    // ];
     static chats = [
         new Chat({messages:[
-            new Message({authorID: "idan", time:"15:52", data: "Hey", type:"message"}),
-            new Message({authorID: "guyAronson guyAronson", time:"15:59", data: "Hey bro", type:"message"}),
-            new Message({authorID: "guyAronson guyAronson", time:"16:00", data: "How are you ?", type:"message"}),
-            new Message({authorID: "idan", time:"16:01", data: "Good", type:"message"}),
+            new Message({authorID: "idan", time:"15:52", data: "Hey", type:"text"}),
+            new Message({authorID: "guyAronson guyAronson", time:"15:59", data: "Hey bro", type:"text"}),
+            new Message({authorID: "guyAronson guyAronson", time:"16:00", data: "How are you ?", type:"text"}),
+            new Message({authorID: "idan", time:"16:01", data: "Good", type:"text"}),
         ], userID1: "guyAronson guyAronson", userID2: "idan", chatID: "1"}),
         new Chat({messages:[
-            new Message({authorID: "guyAronson guyAronson", time:"15:58", data: "wtf", type:"message"}),
-            new Message({authorID: "guyAronson guyAronson", time:"15:58", data: "Hey broooo", type:"message"}),
-            new Message({authorID: "foo", time:"15:52", data: "Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey ", type:"message"}),
-            new Message({authorID: "foo", time:"15:52", data: "adssadsd", type:"message"}),
-            new Message({authorID: "foo", time:"15:52", data: "blablabla", type:"message"}),
+            new Message({authorID: "guyAronson guyAronson", time:"15:58", data: "wtf", type:"text"}),
+            new Message({authorID: "guyAronson guyAronson", time:"15:58", data: "Hey broooo", type:"text"}),
+            new Message({authorID: "foo", time:"15:52", data: "Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey ", type:"text"}),
+            new Message({authorID: "foo", time:"15:52", data: "adssadsd", type:"text"}),
+            new Message({authorID: "foo", time:"15:52", data: "blablabla", type:"text"}),
         ], userID1: "guyAronson guyAronson", userID2: "foo",chatID: "2"})
     ];
     static addUser(new_user) {
@@ -101,12 +86,11 @@ export class DataBase {
 
         return desiredChat;
     }
-    //The function creates new chat, add it to the system and return the chat ID
+    //The function creates new chat, add it to the system and return the chat
     static createNewChat(messages, userID1, userID2, chatID=''){
         let chat = new Chat({messages, userID1, userID2, chatID});
         this.chats.push(chat);
-        console.log("all chats: ", this.chats);
-        return chat.id;
+        return chat;
     }
 }
 

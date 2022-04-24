@@ -1,29 +1,84 @@
 // this is a file i used at draft - to not delete
-
-
 import {React, useState} from 'react';
 import ReactDOM from 'react-dom/client';
 import DataBase from '../Database/DataBase';
 import { OverlayTrigger, Popover } from 'react-bootstrap';
 import { Database } from '../Database';
+import {setFocus} from '../util.js';
 
-export function SidebarList({user, chats, changeChat}){
-    const popoverDown = (
-        <Popover id="insert-chat-popover" title="Popover bottom">
-            <strong>Insert user to chat with:</strong>
-            <input type="email" className="form-control" placeholder="Insert username"/>
-            <span className='error-message d-block small'></span>
-            <button className='btn btn-sm btn-primary'>Enter</button>
-        </Popover>
-    );
+export function SidebarList({user, chats, changeChat, setUserChats}){
     const handleClickOnChatBox = event =>{
         // Getting the partner username from the element
-        if(event.target.tagName == "LI"){
+        if(event.target.tagName === "LI"){
             const partnerUsername = event.target.firstChild.childNodes[1].firstChild.data;
             const newChat = Database.Server.getChatByBothUsers(user.getUsername, partnerUsername);
             changeChat(newChat);
+            setFocus(".msg-input");
         }
     }
+
+    // Set the focus on the input in the add chat pop up
+    const handlePopover = ()=>{
+        setTimeout(()=>{
+            let selector = "#insert-user-input";
+            if(document.querySelector(selector)){
+                setFocus(selector);
+                //Enter click event listener
+                document.querySelector("#insert-user-input").addEventListener("keypress", event => {
+                    console.log("keypress!");
+                    // Enter was clicked a partner was picked
+                    if(event.keyCode === 13){
+                        event.preventDefault();
+                        document.querySelector('#insert-user-button').click();
+                    }
+                });
+            }
+        }, 30)
+    }
+
+    //Adding a new chat to the list of the user's chats
+    const addChat = partnerUsername =>{
+        if(user.getUsername === partnerUsername){
+            document.querySelector("#insert-chat-popover span").innerHTML = "You can't add yourself!";
+            return;
+        }
+        if(DataBase.queryUserName(partnerUsername)){
+            // Create new chat - the creation function returns the created chat
+            let chat = DataBase.createNewChat([], user.getUsername, partnerUsername);
+            console.log("newChat: ", chat);
+            // add the chat id to both of the users
+            user.addChat(chat.id);
+            let partner = DataBase.getUserByID(partnerUsername);
+            partner.addChat(chat.id);
+
+            // set the user chats - the new list
+            let userChats = Database.Server.getChats(user.getUsername);
+            setUserChats(userChats);
+
+            //Assigning the chats in useState to rerender
+            changeChat(chat);
+
+            // document.body.click();
+            document.querySelector(".add-chat-button").click();
+        }
+        else
+            document.querySelector("#insert-chat-popover span").innerHTML = "Wrong username!";
+    }
+    const handleAddChatclick = event=>{
+        // Getting the inserted username
+        addChat(document.getElementById("insert-user-input").value);
+    }
+
+    // The add chat popover
+    const popoverDown = (
+        <Popover id="insert-chat-popover" title="Popover bottom">
+            <strong>Insert user to chat with:</strong>
+            <input id="insert-user-input" type="text" className="form-control" placeholder="Insert username"/>
+            <span className='error-message d-block small'></span>
+            <button className='btn btn-sm btn-primary' id='insert-user-button' onClick={handleAddChatclick}>Enter</button>
+        </Popover>
+    );
+
     return (<>
         {/* The chats list on the left side */}
         <ul className='list-group chat-sidebar'>
@@ -32,7 +87,7 @@ export function SidebarList({user, chats, changeChat}){
                 <span className="header-username">{user.getUsername}</span>
                 {/* Button to add chats */}
                 <OverlayTrigger trigger="click" placement="bottom" overlay={popoverDown} rootClose={true}>
-                    <button type="button" className="btn icon-button"><i className="bi bi-person-plus icon"/></button>
+                    <button type="button" className="btn icon-button add-chat-button" onClick={handlePopover}><i className="bi bi-person-plus icon"/></button>
                 </OverlayTrigger>
             </li>
             {/* Getting the list of all chats converted into <li></li> */}

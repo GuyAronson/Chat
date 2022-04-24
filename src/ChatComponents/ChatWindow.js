@@ -5,10 +5,12 @@ import { getLoggedUser } from './ChatPage';
 import DataBase from '../Database/DataBase';
 import { TheirMessage } from './TheirMessage';
 import { MyMessage } from './MyMessage';
+import { ImageUpload } from './UploadModals/ImageUpload';
+import { VideoUpload } from './UploadModals/VideoUpload';
 
-export function ChatWindow({messages, input, changeInput, send, chat, user}){
+export function ChatWindow({messages, input, changeInput, sendText, sendImage, sendVideo, chat, user}){
     // element to keep the last message in view
-    const partner = (chat && user) ? (user.getUsername === chat.userID1 ? chat.userID1 : chat.userID2) : '';
+    const partner = (chat && user) ? (user.getUsername === chat.userID1 ? chat.userID2 : chat.userID1) : '';
     // creates the effect that the last messages is shown first
     const endDiv = useRef(null);
     useEffect(() => {
@@ -38,7 +40,7 @@ export function ChatWindow({messages, input, changeInput, send, chat, user}){
     function handleSendByKey(e) {
         if (e.key === 'Enter' && input) {
             e.target.value = '';
-            send();
+            sendText();
         }
     }
 
@@ -57,7 +59,7 @@ export function ChatWindow({messages, input, changeInput, send, chat, user}){
             {/* Chat Body - messages goes here */}
             <Card>
                 <Card.Body id='chat-body'>
-                    {(user && messages && messages.length) && RenderMessages()}
+                    {(user && messages) && RenderMessages()}
                     <div id='chat-end' ref={endDiv} style={{float: 'right', clear: 'both'}}></div>
                 </Card.Body>
             </Card>
@@ -66,23 +68,22 @@ export function ChatWindow({messages, input, changeInput, send, chat, user}){
             <Card id ='chat-footer'>
                 <Dropdown>
                     <Dropdown.Toggle variant="light" id="dropdown-basic" className='upload-dropdown'>
-                        Upload
+                        <i className="bi bi-paperclip"></i>
                     </Dropdown.Toggle>
-
                     <Dropdown.Menu>
-                        <Dropdown.Item><i class="bi bi-mic-fill"/> Audio</Dropdown.Item>
-                        <Dropdown.Item><i class="bi bi-camera-fill"/> Photo</Dropdown.Item>
-                        <Dropdown.Item><i class="bi bi-camera-video-fill"/> Video</Dropdown.Item>
+                        <Dropdown.Item href="#/action-1" ><i className="bi bi-mic-fill"/></Dropdown.Item>
+                        <Dropdown.Item href="#/action-2" >
+                            <ImageUpload sendMessage={sendImage}/>
+                        </Dropdown.Item>
+                        <Dropdown.Item href="#/action-3" >
+                            <VideoUpload sendMessage={sendVideo}/>
+                        </Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
-                {/* <OverlayTrigger trigger="click" placement="top" overlay={popoverTop} rootClose={true}>
-                    <button className="btn btn-light upload-popover"><i className="bi bi-arrow-bar-up"/></button>
-                </OverlayTrigger> */}
-                <input 
-                    className="form-control msg-input" type='text' placeholder='Type your message here...'
+                <input className="form-control msg-input" type='text' placeholder='Type your message here...'
                     onChange={(event) => changeInput(event.target.value)} onKeyDown={handleSendByKey}
                 />
-                <button className="btn btn-primary send-button" onClick={send}>
+                <button className="btn btn-primary send-button" onClick={sendText}>
                     <i className="bi bi-send"/>
                 </button>
                 

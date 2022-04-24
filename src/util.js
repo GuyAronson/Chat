@@ -91,3 +91,9 @@ const clearErrors = () => {
     document.querySelector('#passConfirmErrorMesage').innerHTML = "";
     document.querySelector('#checkRobot').style.outline = "";  
 }
+
+export function setFocus(selector){
+    if(document.querySelector(selector)){
+        document.querySelector(selector).focus();
+    }
+}
