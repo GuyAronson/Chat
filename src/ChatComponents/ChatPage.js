@@ -85,10 +85,9 @@ function ChatPage(){
             {/* Hello & logout button */}
             {getLoggedUser() && <blockquote id='hello' className="blockquote">Hello, {getLoggedUser().getNickName}</blockquote>}
             <button className='mb-3 btn btn-lg btn-light logout' onClick={Logout}>Logout</button>
-
-            <Container id="chat-page">
+            <div id="chat-page">
+            <Container >
             <Row>
-                <Col></Col>
                 <Col></Col>
                 <Col sm={2}>
                     {/* Sidebar of chats */}
@@ -102,9 +101,10 @@ function ChatPage(){
                         sendText={pushTextMessage} chat={selectChat} user={currentUser}
                         sendImage={pushImageMessage} sendVideo={pushVideoMessage}/>
                 </Col>
-                
+                <Col></Col>
             </Row>
             </Container>
+            </div>
         </>
     );
 }
