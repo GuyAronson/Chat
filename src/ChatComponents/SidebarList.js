@@ -8,9 +8,28 @@ import {setFocus} from '../util.js';
 
 export function SidebarList({user, chats, changeChat, setUserChats}){
     const handleClickOnChatBox = event =>{
+        let partnerUsername = '';
         // Getting the partner username from the element
-        if(event.target.tagName === "LI"){
-            const partnerUsername = event.target.firstChild.childNodes[1].firstChild.data;
+        if(event.target.tagName === "LI")
+            // li->div->div(partnerName)->data
+            partnerUsername = event.target.firstChild.childNodes[1].firstChild.data;
+        else if(event.target.tagName === "IMG")
+            // if the click was on the profile pic, img->div(parent)->div(partnerName)->data
+            partnerUsername = event.target.parentNode.childNodes[1].firstChild.data;
+        else if(event.target.className === "chatPartner")
+            partnerUsername = event.target.firstChild.data;
+        else if (event.target.className === "chat-box-header")
+            // div->div(partnerName)->data
+            partnerUsername = event.target.childNodes[1].firstChild.data;
+        else if(event.target.className === "last-message")
+            //div(last-message)->li->div->div(userName)->data
+            partnerUsername = event.target.parentNode.firstChild.childNodes[1].firstChild.data;
+        else if(event.target.className.includes("msg_timeStamp"))
+            // if the click is on the timeStamp
+            //span(timeStamp)->li->div->div(userName)->data
+            partnerUsername = event.target.parentNode.firstChild.childNodes[1].firstChild.data;
+
+        if(partnerUsername){
             const newChat = Database.Server.getChatByBothUsers(user.getUsername, partnerUsername);
             changeChat(newChat);
             setFocus(".msg-input");
@@ -95,7 +114,7 @@ export function SidebarList({user, chats, changeChat, setUserChats}){
                     // Getting the partner username -> get his profile pic
                     let partner = chat._userID1 === user.getUsername? chat.userID2: chat.userID1;
                     return <li className = 'list-group-item chat-item' key={index} onClick={handleClickOnChatBox}>
-                            <div className=' d-flex justify-content-start align-items-start'>
+                            <div className=' d-flex justify-content-start align-items-start chat-box-header'>
                                 {/* profile pic */}
                                 <img className='profile-pic-small' src={DataBase.getUserByID(partner).getPicture} alt= "Bruh.."/>
                                 {/* the name of the person chattin with */}
