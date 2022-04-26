@@ -1,16 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import Banner from '../banner.js';
 import Register from './register.js';
 
-class RegisterPage extends React.Component{
-    render(){
+export const RegisterPage = ({setUser}) => {
         return(
             <div className='content'>
-                <div className='form'><Register/></div>
+                <div className='form'><Register setUser={setUser}/></div>
             </div>
         );
-    }
 }
 
 export default RegisterPage;

@@ -1,29 +1,13 @@
 // import 'bootstrap/dist/css/bootstrap.css'
 // import App from './App'
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import './style.css'
-import { BrowserRouter, Routes, Route} from "react-router-dom";
-import RegisterPage from './Register-login/registerPage.js';
-import ChatPage from './ChatComponents/ChatPage'
-import LoginPage from './Register-login/loginPage';
-// import {users, getLoggedUser ,details} from './users';
-import Layout from './Layout';
-import Banner from './banner';
+import App from './App'
 
-const root = ReactDOM.createRoot(document.querySelector('#root'));
-
-root.render(<>
-<BrowserRouter>
-    <Banner/>
-    <Routes>
-          <Route exact path="/" element={<Layout />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/chat/:username" element={<ChatPage/>} />
-      </Routes>
-  </BrowserRouter>
-  </>)
-
-//root.render(<RegisterPage/>);
-
+ReactDOM.render(
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+      , document.getElementById('root')
+  );
