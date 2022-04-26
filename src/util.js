@@ -71,7 +71,7 @@ export function checkSubmitValidation({event, setUser}){
     if(formIsValid) {
         let profilePicture = document.querySelector("#profileThumbnail").src.toString();
         if(!profilePicture)
-            profilePicture = '';
+            profilePicture = '/pictures/defaultAvater.png';
         console.log("type of profilePicture: ", typeof(profilePicture));
         let user = new User({username: username, email: email,password: password,  nickname: nickname ,picture: profilePicture});
         DataBase.addUser(user);
