@@ -6,12 +6,9 @@ import Login from './login.js';
 class LoginPage extends React.Component{
     render(){
         return(
-            <>
-                <div><Banner/></div>
-                <div className='content form'>
-                    <Login/>
-                </div>
-            </>
+            <div className='content form'>
+                <Login/>
+            </div>
         );
     }
 }

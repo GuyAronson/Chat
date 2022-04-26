@@ -6,12 +6,9 @@ import Register from './register.js';
 class RegisterPage extends React.Component{
     render(){
         return(
-            <>
-                <div><Banner/></div>
-                <div className='content'>
-                    <div className='form'><Register/></div>
-                </div>
-            </>
+            <div className='content'>
+                <div className='form'><Register/></div>
+            </div>
         );
     }
 }

@@ -72,9 +72,6 @@ function ChatPage(){
     }
     return(
         <>
-            {/* The chat page */}
-            <div><Banner/></div>
-            {/* Hello & logout button */}
             {getLoggedUser() && <blockquote id='hello' className="blockquote">Hello, {getLoggedUser().getNickName}</blockquote>}
             <div id="chat-page">
             <Container >
