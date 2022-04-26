@@ -97,7 +97,7 @@ export function SidebarList({user, chats, changeChat, setUserChats}){
         <ul className='list-group chat-sidebar'>
             <li className = 'list-group-item d-flex justify-content-between align-items-stretch'>
                 <img className='profile-pic' src={user.getPicture} alt= "Bruh.."/>
-                <span className="header-username">{user.getUsername}</span>
+                <span className="header-username">{user.getNickName}</span>
                 {/* Button to add chats */}
                 <OverlayTrigger trigger="click" placement="bottom" overlay={popoverDown} rootClose={true}>
                     <button type="button" className="btn icon-button add-chat-button" onClick={handlePopover}><i className="bi bi-person-plus icon"/></button>
@@ -107,7 +107,7 @@ export function SidebarList({user, chats, changeChat, setUserChats}){
             {chats.map((chat, index) => {
                     // Getting the partner username -> get his profile pic
                     let partner = chat._userID1 === user.getUsername? chat.userID2: chat.userID1;
-                    return <li className = 'list-group-item chat-item' key={index} onClick={handleClickOnChatBox}>
+                    return <li className='list-group-item chat-item' id={index} key={index} onClick={handleClickOnChatBox}>
                             <div className=' d-flex justify-content-start align-items-start'>
                                 {/* profile pic */}
                                 <img className='profile-pic-small' src={DataBase.getUserByID(partner).getPicture} alt= "Bruh.."/>
