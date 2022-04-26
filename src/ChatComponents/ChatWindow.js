@@ -7,8 +7,9 @@ import { TheirMessage } from './TheirMessage';
 import { MyMessage } from './MyMessage';
 import { ImageUpload } from './UploadModals/ImageUpload';
 import { VideoUpload } from './UploadModals/VideoUpload';
+import { AudioUpload } from './UploadModals/AudioUpload';
 
-export function ChatWindow({messages, input, changeInput, sendText, sendImage, sendVideo, chat, user}){
+export function ChatWindow({messages, input, changeInput, sendText, sendImage, sendVideo, sendAudio, chat, user}){
     // element to keep the last message in view
     const partner = (chat && user) ? (user.getUsername === chat.userID1 ? chat.userID2 : chat.userID1) : '';
     // creates the effect that the last messages is shown first
@@ -71,7 +72,9 @@ export function ChatWindow({messages, input, changeInput, sendText, sendImage, s
                         <i className="bi bi-paperclip"></i>
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                        <Dropdown.Item href="#/action-1" ><i className="bi bi-mic-fill"/></Dropdown.Item>
+                        <Dropdown.Item href="#/action-1" >
+                            <AudioUpload sendMessage={sendAudio}/>
+                        </Dropdown.Item>
                         <Dropdown.Item href="#/action-2" >
                             <ImageUpload sendMessage={sendImage}/>
                         </Dropdown.Item>
@@ -80,7 +83,8 @@ export function ChatWindow({messages, input, changeInput, sendText, sendImage, s
                         </Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
-                <input className="form-control msg-input" type='text' placeholder='Type your message here...'
+                <input 
+                    className="form-control msg-input" type='text' placeholder='Type your message here...'
                     onChange={(event) => changeInput(event.target.value)} onKeyDown={handleSendByKey}
                 />
                 <button className="btn btn-primary send-button" onClick={sendText}>
