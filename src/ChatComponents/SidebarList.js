@@ -79,6 +79,19 @@ export function SidebarList({user, chats, changeChat, setUserChats}){
         </Popover>
     );
 
+    function displayLastMessage(message) {
+        let type = message.type
+        if (type === "text") {
+            return message.data;
+        } else if (type === "image") {
+            return "image";
+        } else if (type === "video") {
+            return "video";
+        } else {
+            return "recording";
+        }
+    }
+
     return (<>
         {/* The chats list on the left side */}
         <ul className='list-group chat-sidebar'>
@@ -102,9 +115,9 @@ export function SidebarList({user, chats, changeChat, setUserChats}){
                                 <div className='chatPartner'>{user._username === chat.userID1 ? chat.userID2: chat.userID1}</div>
                             </div>
                             {/* Here will go the last message */}
-                            <div className='last-message'>{chat.messages.length ? chat.messages[chat.messages.length-1].data : ''}</div>
+                            <div className='last-message'>{chat.messages.length ? displayLastMessage(chat.messages[chat.messages.length-1]) : ''}</div>
                             {/* Here is the timestamp of the last message */}
-                            <span className='position-absolute end-0 m-2 msg_timeStamp'>{chat.messages.length ? chat.messages[0].timeStamp : ''}</span>
+                            <span className='position-absolute end-0 m-2 msg_timeStamp'>{chat.messages.length ? chat.messages[chat.messages.length-1].timeStamp : ''}</span>
                         </li>
             })}
         </ul>

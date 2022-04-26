@@ -18,7 +18,7 @@ export const MyMessage = props => {
             <>
                 <div className="my_msg">
                     <img src={data} className="msg_img" alt="null"/>
-                    <div className="msg_timeStamp">  </div>
+                    <div className="msg_timeStamp">{time}</div>
                 </div>
             </>
         )
