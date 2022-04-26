@@ -66,7 +66,7 @@ export function ChatWindow({messages, input, changeInput, sendText, sendImage, s
             <Card>
                 <Card.Body id='chat-body'>
                     {(user && messages) && RenderMessages()}
-                    <div id='chat-end' ref={endDiv} style={{float: 'right', clear: 'both'}}></div>
+                    <div id='chat-end' ref={endDiv} style={{float: 'left', clear: 'both'}}></div>
                 </Card.Body>
             </Card>
 
@@ -92,7 +92,7 @@ export function ChatWindow({messages, input, changeInput, sendText, sendImage, s
                     className="form-control msg-input" type='text' placeholder='Type your message here...'
                     onChange={(event) => changeInput(event.target.value)} onKeyDown={handleSendByKey} id="input"
                 />
-                <button className="btn btn-primary send-button" onClick={sendByMouse}>
+                <button className="btn btn-primary send-button" onClick={sendByMouse}   >
                     <i className="bi bi-send"/>
                 </button>
                 
