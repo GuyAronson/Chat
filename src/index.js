@@ -9,17 +9,8 @@ import ChatPage from './ChatComponents/ChatPage'
 import LoginPage from './Register-login/loginPage';
 // import {users, getLoggedUser ,details} from './users';
 import Layout from './Layout';
-import NotFound404 from './NotFound404';
-// import AddChat from './Chat/AddChat.js'
-import { getLoggedUser } from './ChatComponents/ChatPage.js';
 
 const root = ReactDOM.createRoot(document.querySelector('#root'));
-function CanMoveToChat() {
-    if(getLoggedUser())
-        return <ChatPage/>;
-    else
-        return <NotFound404/>;
-}
 
 root.render(<>
 <BrowserRouter>
@@ -28,7 +19,7 @@ root.render(<>
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           {/* <Route path="addchat" element={<AddChat open={true}/>}/> */}
-          <Route path="/chat/:username" element={<CanMoveToChat/>} />
+          <Route path="/chat/:username" element={<ChatPage/>} />
       </Routes>
   </BrowserRouter>
   </>)
