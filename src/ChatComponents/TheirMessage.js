@@ -33,13 +33,4 @@ export const TheirMessage = props => {
             </div>
         )
     }
-
-    if (type === "audio") {
-        return (
-            <div className="their_msg">
-                <audio controls src={data} className="msg_record"></audio>
-                <div className="msg_timeStamp">{time}</div>
-            </div>
-        )
-    }
 }
