@@ -15,17 +15,17 @@ export class DataBase {
     ];
     static chats = [
         new Chat({messages:[
-            new Message({authorID: "idan", time:"15:52", data: "Hey", type:"text"}),
-            new Message({authorID: "guyAronson guyAronson", time:"15:59", data: "Hey bro", type:"text"}),
-            new Message({authorID: "guyAronson guyAronson", time:"16:00", data: "How are you ?", type:"text"}),
-            new Message({authorID: "idan", time:"16:01", data: "Good", type:"text"}),
+            new Message({authorID: "idan", time: new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}), data: "Hey", type:"text"}),
+            new Message({authorID: "guyAronson guyAronson", time: new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}), data: "Hey bro", type:"text"}),
+            new Message({authorID: "guyAronson guyAronson", time: new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}), data: "How are you ?", type:"text"}),
+            new Message({authorID: "idan", time: new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}) , data: "Good", type:"text"}),
         ], userID1: "guyAronson guyAronson", userID2: "idan", chatID: "1"}),
         new Chat({messages:[
-            new Message({authorID: "guyAronson guyAronson", time:"15:58", data: "wtf", type:"text"}),
-            new Message({authorID: "guyAronson guyAronson", time:"15:58", data: "Hey broooo", type:"text"}),
-            new Message({authorID: "foo", time:"15:52", data: "Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey ", type:"text"}),
-            new Message({authorID: "foo", time:"15:52", data: "adssadsd", type:"text"}),
-            new Message({authorID: "foo", time:"15:52", data: "blablabla", type:"text"}),
+            new Message({authorID: "guyAronson guyAronson", time: new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}), data: "wtf", type:"text"}),
+            new Message({authorID: "guyAronson guyAronson", time: new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}), data: "Hey broooo", type:"text"}),
+            new Message({authorID: "foo", time: new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}), data: "Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey ", type:"text"}),
+            new Message({authorID: "foo", time: new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}), data: "adssadsd", type:"text"}),
+            new Message({authorID: "foo", time: new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}), data: "blablabla", type:"text"}),
         ], userID1: "guyAronson guyAronson", userID2: "foo",chatID: "2"})
     ];
     static addUser(new_user) {
