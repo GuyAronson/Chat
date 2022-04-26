@@ -1,5 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Lobster);
 
+#register-button {
+  margin-right: 30px;
+}
 body{
   width:100%;
   height:100%;
