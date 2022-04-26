@@ -1,5 +1,4 @@
 import React from 'react';
-import { Navigate } from 'react-router';
 import Banner from '../banner.js';
 import ChatWindow from './ChatWindow.js';
 import SidebarList from './SidebarList';
@@ -25,7 +24,6 @@ function ChatPage(){
     // this are the current messages
     const [currentMessages, setCurrentMessages] = useState([]);
     // something that will not be used
-    const [logout, setLogout] = useState(false);
     
     /**
      * This will change the current messages when one the evetns below occours:
@@ -72,25 +70,12 @@ function ChatPage(){
             setUserChats(Database.Server.getChats(currentUser.getUsername));
         }
     }
-    //Function to log out from the chat window - returns to login
-    const Logout = (event) => {
-        setLoggedUser(null);
-        console.log("user changed");
-        setLogout(true);
-        setUserChats(null);
-        setSelectedChat(null);
-        setCurrentMessages(null);
-    }
     return(
         <>
-            {/* Navigate back to the login page if the logout was selected */}
-            {logout && <Navigate to='/login' replace={true}/> }
-
             {/* The chat page */}
             <div><Banner/></div>
             {/* Hello & logout button */}
             {getLoggedUser() && <blockquote id='hello' className="blockquote">Hello, {getLoggedUser().getNickName}</blockquote>}
-            <button className='mb-3 btn btn-lg btn-light logout' onClick={Logout}>Logout</button>
             <div id="chat-page">
             <Container >
             <Row>
