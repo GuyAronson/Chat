@@ -1,7 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import Banner from '../banner.js';
-import { getLoggedUser } from '../users.js';
 
 export function AddChat(props){
     if(props.open){

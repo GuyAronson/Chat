@@ -1,9 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
 
-class PasswordInput extends React.Component{
-
-    render(){
+export const PasswordInput = () => {
         return(
             <>
                 {/* Password input */}
@@ -20,7 +17,6 @@ class PasswordInput extends React.Component{
                 </div>
             </>
         )
-    }
 }
 
 export default PasswordInput;

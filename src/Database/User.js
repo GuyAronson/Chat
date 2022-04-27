@@ -1,5 +1,3 @@
-import DataBase from "./DataBase";
-
 export class User {
     constructor({username, email, password, nickname, picture, chats=[]}) {
         this._username = username;

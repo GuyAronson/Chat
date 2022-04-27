@@ -1,9 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
 
-class UsernameInput extends React.Component{
-
-    render(){
+export const UsernameInput = () => {
         return(
             <>
                 <div className="mb-3 tab tab-right">
@@ -13,7 +10,6 @@ class UsernameInput extends React.Component{
                 </div>
             </>
         )
-    }
 }
 
 export default UsernameInput;

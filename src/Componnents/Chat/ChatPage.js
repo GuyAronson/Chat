@@ -1,8 +1,8 @@
 import React from 'react';
-import ChatWindow from './ChatWindow.js';
-import SidebarList from './SidebarList';
+import ChatWindow from './ChatWindow/ChatWindow.js';
+import SidebarList from './Sidebar/SidebarList';
 import { Container, Row, Col } from 'react-bootstrap';
-import { Database } from '../Database/index.js';
+import { Database } from '../../Database/index.js';
 import { useState, useEffect } from 'react';
 
 

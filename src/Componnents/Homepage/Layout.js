@@ -1,9 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import Banner from './banner.js';
 
-class Layout extends React.Component{
-    render(){
+export const Layout = () => {
         return(
             <form className='form pb-4'>
                 <h2 className = "topic">Welcome!</h2>
@@ -13,7 +10,6 @@ class Layout extends React.Component{
                 </div>
             </form>
         );
-    }
 }
 
 export default Layout;

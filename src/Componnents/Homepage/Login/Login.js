@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 import { useState } from 'react';
 import { Navigate } from 'react-router';
-import { DataBase } from '../Database/DataBase.js';
+import { DataBase } from '../../../Database/DataBase.js';
 
 
 export default function Login({setUser}){

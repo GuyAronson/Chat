@@ -1,8 +1,8 @@
 import React from 'react';
-import ProfilePicInput from './ProfiePicInput.js';
-import PasswordInput from './PasswordInput.js';
-import UsernameInput from './UsernameInput.js';
-import {checkSubmitValidation} from '../util.js';
+import ProfilePicInput from '../Input/ProfiePicInput'
+import PasswordInput from '../Input/PasswordInput.js';
+import UsernameInput from '../Input/UsernameInput.js';
+import {checkSubmitValidation} from '../../../util.js';
 import {Link ,useNavigate } from 'react-router-dom';
 
 export const Register = ({setUser}) => { 

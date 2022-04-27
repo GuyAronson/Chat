@@ -1,10 +1,9 @@
 // this is a file i used at draft - to not delete
-import {React, useState} from 'react';
-import ReactDOM from 'react-dom/client';
-import DataBase from '../Database/DataBase';
+import React from 'react';
+import DataBase from '../../../Database/DataBase';
 import { OverlayTrigger, Popover } from 'react-bootstrap';
-import { Database } from '../Database';
-import {setFocus} from '../util.js';
+import { Database } from '../../../Database';
+import {setFocus} from '../../../util.js';
 
 export function SidebarList({user, chats, changeChat, setUserChats}){
     const handleClickOnChatBox = event =>{

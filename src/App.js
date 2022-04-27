@@ -2,12 +2,12 @@
 import React, { useState } from 'react';
 import './style.css'
 import { BrowserRouter, Routes, Route} from "react-router-dom";
-import RegisterPage from './Register-login/registerPage.js';
-import ChatPage from './ChatComponents/ChatPage'
-import LoginPage from './Register-login/loginPage';
-// import {users, getLoggedUser ,details} from './users';
-import Layout from './Layout';
-import Banner from './banner';
+import Banner from "./Componnents/Homepage/Banner";
+import Layout from "./Componnents/Homepage/Layout";
+import RegisterPage from './Componnents/Homepage/Register/RegisterPage';
+import LoginPage from './Componnents/Homepage/Login/LoginPage'
+import ChatPage from './Componnents/Chat/ChatPage';
+
 
 function App() {
   const [loggedUser, setLoggedUser] = useState({});

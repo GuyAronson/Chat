@@ -1,5 +1,5 @@
 import React from 'react';
-import Register from './register.js';
+import Register from './Register.js';
 
 export const RegisterPage = ({setUser}) => {
         return(

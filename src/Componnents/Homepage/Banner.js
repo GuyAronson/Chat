@@ -1,8 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
 
-class Banner extends React.Component{
-    render(){
+const Banner = () => {
         return (
         <><div id="top-container">
         <div id="logo">
@@ -16,5 +14,4 @@ class Banner extends React.Component{
         </div></>
         );
     }
-}
 export default Banner;

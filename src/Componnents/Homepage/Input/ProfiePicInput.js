@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ProfilePicInput(){
+export const ProfilePicInput = () => {
     const onFileChange = event => {
         var thumbnail = document.getElementById('profileThumbnail');
         let imgURL = URL.createObjectURL(event.target.files[0]);

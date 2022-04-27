@@ -1,13 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Container, Card,OverlayTrigger, Button, Popover, Dropdown, DropdownButton } from 'react-bootstrap';
-import ReactDOM from 'react-dom/client';
-import { getLoggedUser } from './ChatPage';
-import DataBase from '../Database/DataBase';
-import { TheirMessage } from './TheirMessage';
-import { MyMessage } from './MyMessage';
+import React, { useEffect, useRef } from 'react';
+import { Container, Card , Dropdown } from 'react-bootstrap';
+import DataBase from '../../../Database/DataBase';
+import { TheirMessage } from "./Messages/TheirMessage"
+import { MyMessage } from './Messages/MyMessage';
 import { ImageUpload } from './UploadModals/ImageUpload';
 import { VideoUpload } from './UploadModals/VideoUpload';
 import { AudioUpload } from './UploadModals/AudioUpload';
+import { Database } from '../../../Database';
 
 export function ChatWindow({messages, input, changeInput, sendText, sendImage, sendVideo, sendAudio, chat, user}){
     // element to keep the last message in view
@@ -60,7 +59,7 @@ export function ChatWindow({messages, input, changeInput, sendText, sendImage, s
                     {/* Need to add a profile pic */}
                     {partner &&
                     <div><img className='profile-pic' src={DataBase.getUserByID(partner).getPicture} alt= "Bruh.."/>
-                    <span id="header-partner-uname">{partner}</span></div>}
+                    <span id="header-partner-uname">{Database.Server.getUserByID(partner).getNickName}</span></div>}
                 </Card.Header>
             </Card>
 
