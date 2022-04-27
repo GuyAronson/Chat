@@ -14,7 +14,9 @@ export function ChatWindow({messages, input, changeInput, sendText, sendImage, s
     // creates the effect that the last messages is shown first
     const endDiv = useRef(null);
     useEffect(() => {
-        endDiv.current.scrollIntoView();
+        setTimeout(() => {
+            endDiv.current.scrollIntoView()
+        }, 25);
     })
 
     // function - Renders messages into the screen
