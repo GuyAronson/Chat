@@ -43,7 +43,6 @@ export function SidebarList({user, chats, changeChat, setUserChats}){
                 setFocus(selector);
                 //Enter click event listener
                 document.querySelector("#insert-user-input").addEventListener("keypress", event => {
-                    console.log("keypress!");
                     // Enter was clicked a partner was picked
                     if(event.keyCode === 13){
                         event.preventDefault();
@@ -61,6 +60,10 @@ export function SidebarList({user, chats, changeChat, setUserChats}){
             return;
         }
         if(DataBase.queryUserName(partnerUsername)){
+            if (chats.find((chat) => chat.userID1 === partnerUsername || chat.userID2 === partnerUsername)) {
+                document.querySelector("#insert-chat-popover span").innerHTML = "You can't add the same chat!";
+                return;
+            }
             // Create new chat - the creation function returns the created chat
             let chat = DataBase.createNewChat([], user.getUsername, partnerUsername);
             console.log("newChat: ", chat);
