@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal , Button } from 'react-bootstrap'
-import { RecordingDiplay } from './RecordingDisplay';
+import { RecordingDisplay } from './RecordingDisplay';
 
 
 export const AudioUpload = ({sendMessage}) => {
@@ -74,9 +74,9 @@ export const AudioUpload = ({sendMessage}) => {
                 </Modal.Header>
                 <Modal.Body>
                     <button className="btn btn-sm" onMouseDown={handleStart} onMouseUp={handleStop}>
-                        <i className="bi bi-mic"></i>
+                        <i className="bi bi-mic-fill"/>
                     </button>
-                    {(record !== "") ? <RecordingDiplay record={record} /> : ""}
+                    {(record !== "") ? <RecordingDisplay record={record} /> : ""}
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleSendRecord}>

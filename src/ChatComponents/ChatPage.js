@@ -82,7 +82,7 @@ export const ChatPage = ({loggedUser}) => {
                     {/* Chat body */}
                     <ChatWindow messages={currentMessages} input={input} changeInput={setInput} 
                         sendText={pushTextMessage} chat={selectChat} user={currentUser}
-                        sendImage={pushImageMessage} sendVideo={pushVideoMessage}/>
+                        sendImage={pushImageMessage} sendVideo={pushVideoMessage} sendAudio={pushAudioMessage}/>
                 </Col>
                 <Col></Col>
             </Row>
