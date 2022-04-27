@@ -1,14 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
 import {Link} from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 import { useState } from 'react';
 import { Navigate } from 'react-router';
-import { getLoggedUser, setLoggedUser } from '../ChatComponents/ChatPage.js';
 import { DataBase } from '../Database/DataBase.js';
 
 
-export default function Login(props){
+export default function Login({setUser}){
     const [error, setError] = useState('');
     const [username, setUsername] = useState('');
 
@@ -29,10 +27,8 @@ export default function Login(props){
         } else{
             let thisUser = DataBase.getUserByID(username);
             if(thisUser){
-                console.log("user exists!");
-                setLoggedUser(thisUser);
-                console.log("logged user: ",getLoggedUser());
                 setUsername(username);
+                setUser(DataBase.getUserByID(username));
             } else
                 setError("User was not found!");
         }

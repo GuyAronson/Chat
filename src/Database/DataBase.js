@@ -6,27 +6,35 @@ export class DataBase {
     static users = [
         new User({ username: "idan",  email: "idanziv7@gmail.com",password: "12",  nickname:"LazY",
                 picture:'/pictures/bro2.jpg', chats:["1"]}),
-        new User({username:"guyAronson guyAronson", email: "guy@walla.co.il", password: "12", nickname: "guyush",
-                picture:'/pictures/bro.jpg', chats:["1","2"]}),
-        new User({username:"foo", email: "foo@kaka.co.il", password: "12", nickname: "foofi",
-                picture:'/pictures/bro3.jpg', chats:["2"]}),
-        new User({username:"Yossi", email: "Yossi@yahoo.co.il", password: "12", nickname: "Yoske",
-                picture:'/pictures/bro4.png', chats:[]}),
+        new User({username:"Jhon Cena", email: "jhon@cena.co.il", password: "strongPassword!", nickname: "Not Jhon Cena !",
+                picture:'/Pictures/jhonCena.jpeg', chats:["1","2"]}),
+        new User({username:"Mike", email: "foo@kaka.co.il", password: "reactWasFun", nickname: "Mikey",
+                picture:'https://randomuser.me/api/portraits/men/3.jpg', chats:["2"]}),
+        new User({username:"Sharon Sholdberg", email: "iamrich@wealth.co.il", password: "ilovemon3y", nickname: "Blondie",
+                picture:'https://randomuser.me/api/portraits/women/3.jpg', chats:[]}),
+        new User({username: "Lisa", email: "test@faker.com", password: "lisa1234!", nickname: "Kitty", 
+                picture:"https://randomuser.me/api/portraits/women/1.jpg", chats: []}),
+        new User({username: "Elon Musk", email: "elon@tesla.com", password: "$teslaStocks!", nickname: "Big Dollar", 
+                picture: "public/Pictures/tesla.png", chats: []})
     ];
     static chats = [
+        // idan's chats
         new Chat({messages:[
-            new Message({authorID: "idan", time:"15:52", data: "Hey", type:"text"}),
-            new Message({authorID: "guyAronson guyAronson", time:"15:59", data: "Hey bro", type:"text"}),
-            new Message({authorID: "guyAronson guyAronson", time:"16:00", data: "How are you ?", type:"text"}),
-            new Message({authorID: "idan", time:"16:01", data: "Good", type:"text"}),
-        ], userID1: "guyAronson guyAronson", userID2: "idan", chatID: "1"}),
+            new Message({authorID: "idan", time: new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}), data: "Hey", type:"text"}),
+            new Message({authorID: "Jhon Cena", time: new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}), data: "Who dis?", type:"text"}),
+            new Message({authorID: "idan", time: new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}), data: "Its me! who are you?", type:"text"}),
+            new Message({authorID: "Jhon Cena", time: new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}) , data: "I am:", type:"text"}),
+            new Message({authorID: "Jhon Cena", time: new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}), data: "/AudioSegments/jhonCena.mp3", type: "audio"}),
+            new Message({authorID: "idan", time: new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}), data: "/VideoSegments/excitedKid.mp4", type: "video"}),
+            new Message({authorID: "idan", time: new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}), data: "/Pictures/iLoveYou.png", type: "image"})
+        ], userID1: "Jhon Cena", userID2: "idan", chatID: "1"}),
         new Chat({messages:[
-            new Message({authorID: "guyAronson guyAronson", time:"15:58", data: "wtf", type:"text"}),
-            new Message({authorID: "guyAronson guyAronson", time:"15:58", data: "Hey broooo", type:"text"}),
-            new Message({authorID: "foo", time:"15:52", data: "Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey ", type:"text"}),
-            new Message({authorID: "foo", time:"15:52", data: "adssadsd", type:"text"}),
-            new Message({authorID: "foo", time:"15:52", data: "blablabla", type:"text"}),
-        ], userID1: "guyAronson guyAronson", userID2: "foo",chatID: "2"})
+            new Message({authorID: "Jhon Cena", time: new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}), data: "wtf", type:"text"}),
+            new Message({authorID: "Jhon Cena", time: new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}), data: "Hey broooo", type:"text"}),
+            new Message({authorID: "foo", time: new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}), data: "Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey ", type:"text"}),
+            new Message({authorID: "foo", time: new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}), data: "adssadsd", type:"text"}),
+            new Message({authorID: "foo", time: new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}), data: "blablabla", type:"text"}),
+        ], userID1: "idan", userID2: "Mike",chatID: "2"})
     ];
     static addUser(new_user) {
         DataBase.users.push(new_user);
@@ -82,7 +90,7 @@ export class DataBase {
     }
     static getChatByBothUsers(username1, username2){
         let chatsUser1 = this.getChats(username1);
-        const desiredChat = chatsUser1.find(chat=> chat._userID1 == username2 || chat._userID2 == username2);
+        const desiredChat = chatsUser1.find(chat=> chat._userID1 === username2 || chat._userID2 === username2);
 
         return desiredChat;
     }

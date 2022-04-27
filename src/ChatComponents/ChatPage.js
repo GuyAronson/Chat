@@ -1,19 +1,13 @@
 import React from 'react';
-import { Navigate } from 'react-router';
-import Banner from '../banner.js';
 import ChatWindow from './ChatWindow.js';
 import SidebarList from './SidebarList';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Database } from '../Database/index.js';
 import { useState, useEffect } from 'react';
 
-var loggedUser = Database.Server.getUserByID("idan");
-// var loggedUser = null;
-export var getLoggedUser = () => loggedUser;
-export var setLoggedUser = user =>loggedUser = user;
 
-function ChatPage(){
-    const currentUser = getLoggedUser();
+export const ChatPage = ({loggedUser}) => {
+    const currentUser = loggedUser;
     // this is the users chats.
     const userDataContext = currentUser !== null? Database.Server.getChats(currentUser.getUsername) : null;
     // this is data the chat works with
@@ -25,7 +19,6 @@ function ChatPage(){
     // this are the current messages
     const [currentMessages, setCurrentMessages] = useState([]);
     // something that will not be used
-    const [logout, setLogout] = useState(false);
     
     /**
      * This will change the current messages when one the evetns below occours:
@@ -66,32 +59,22 @@ function ChatPage(){
             setUserChats(Database.Server.getChats(currentUser.getUsername));
         }
     }
-    //Function to log out from the chat window - returns to login
-    const Logout = (event) => {
-        setLoggedUser(null);
-        console.log("user changed");
-        setLogout(true);
-        setUserChats(null);
-        setSelectedChat(null);
-        setCurrentMessages(null);
+    const pushAudioMessage = (record) => {
+        if (selectChat && record) {
+            selectChat.addMessage(record, "audio", currentUser.getUsername);
+            setUserChats(Database.Server.getChats(currentUser.getUsername));
+        }
     }
     return(
         <>
-            {/* Navigate back to the login page if the logout was selected */}
-            {logout && <Navigate to='/login' replace={true}/> }
-
-            {/* The chat page */}
-            <div><Banner/></div>
-            {/* Hello & logout button */}
-            {getLoggedUser() && <blockquote id='hello' className="blockquote">Hello, {getLoggedUser().getNickName}</blockquote>}
-            <button className='mb-3 btn btn-lg btn-light logout' onClick={Logout}>Logout</button>
+            {<blockquote id='hello' className="blockquote">Hello, {loggedUser.getNickName}</blockquote>}
             <div id="chat-page">
             <Container >
             <Row>
                 <Col></Col>
                 <Col sm={2}>
                     {/* Sidebar of chats */}
-                    {getLoggedUser() && <SidebarList user={currentUser} changeChat={setSelectedChat} chats={userChats} setUserChats={setUserChats}/>}
+                    {loggedUser && <SidebarList user={currentUser} changeChat={setSelectedChat} chats={userChats} setUserChats={setUserChats}/>}
                     {/* <div id='container-recipients'>
                     </div> */}
                 </Col>

@@ -1,5 +1,3 @@
-import ProfilePicInput from './Register-login/ProfiePicInput';
-import { setLoggedUser, getLoggedUser } from './ChatComponents/ChatPage';
 import {DataBase} from './Database/DataBase';
 import { User } from "./Database/User"
 
@@ -30,7 +28,7 @@ export function validatePassword(password){
     }
 }
 // Gets a form onSubmit event and checks validation - add the user to the DB if the form is valid
-export function checkSubmitValidation(event){
+export function checkSubmitValidation({event, setUser}){
     event.preventDefault();
     const email = event.target.emailInput.value;
     const nickname = event.target.nicknameInput.value;
@@ -73,12 +71,11 @@ export function checkSubmitValidation(event){
     if(formIsValid) {
         let profilePicture = document.querySelector("#profileThumbnail").src.toString();
         if(!profilePicture)
-            profilePicture = '';
+            profilePicture = '/pictures/defaultAvater.png';
         console.log("type of profilePicture: ", typeof(profilePicture));
         let user = new User({username: username, email: email,password: password,  nickname: nickname ,picture: profilePicture});
         DataBase.addUser(user);
-        setLoggedUser(user);
-        console.log(getLoggedUser());
+        setUser(DataBase.getUserByID(username));
         return true;
     }
     return false;

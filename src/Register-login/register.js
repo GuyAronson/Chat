@@ -1,18 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
 import ProfilePicInput from './ProfiePicInput.js';
 import PasswordInput from './PasswordInput.js';
 import UsernameInput from './UsernameInput.js';
 import {checkSubmitValidation} from '../util.js';
 import {Link ,useNavigate } from 'react-router-dom';
-import DataBase from '../Database/DataBase.js';
 
-function Register (){ 
+export const Register = ({setUser}) => { 
     let navigate = useNavigate();
 
     async function handleSubmit(event){
         event.preventDefault();
-        if(checkSubmitValidation(event)){
+        if(checkSubmitValidation({event, setUser})){
             // If the validation succeeded it will navigate to the chat page
             navigate(`/chat/${event.target.usernameInput.value}`, { replace: true });
         }

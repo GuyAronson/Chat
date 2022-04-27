@@ -98,12 +98,25 @@ export function SidebarList({user, chats, changeChat, setUserChats}){
         </Popover>
     );
 
+    function displayLastMessage(message) {
+        let type = message.type
+        if (type === "text") {
+            return message.data;
+        } else if (type === "image") {
+            return "image";
+        } else if (type === "video") {
+            return "video";
+        } else {
+            return "recording";
+        }
+    }
+
     return (<>
         {/* The chats list on the left side */}
         <ul className='list-group chat-sidebar'>
             <li className = 'list-group-item d-flex justify-content-between align-items-stretch'>
                 <img className='profile-pic' src={user.getPicture} alt= "Bruh.."/>
-                <span className="header-username">{user.getUsername}</span>
+                <span className="header-username">{user.getNickName}</span>
                 {/* Button to add chats */}
                 <OverlayTrigger trigger="click" placement="bottom" overlay={popoverDown} rootClose={true}>
                     <button type="button" className="btn icon-button add-chat-button" onClick={handlePopover}><i className="bi bi-person-plus icon"/></button>
@@ -121,9 +134,9 @@ export function SidebarList({user, chats, changeChat, setUserChats}){
                                 <div className='chatPartner'>{user._username === chat.userID1 ? chat.userID2: chat.userID1}</div>
                             </div>
                             {/* Here will go the last message */}
-                            <div className='last-message'>{chat.messages.length ? chat.messages[chat.messages.length-1].data : ''}</div>
+                            <div className='last-message'>{chat.messages.length ? displayLastMessage(chat.messages[chat.messages.length-1]) : ''}</div>
                             {/* Here is the timestamp of the last message */}
-                            <span className='position-absolute end-0 m-2 msg_timeStamp'>{chat.messages.length ? chat.messages[0].timeStamp : ''}</span>
+                            <span className='position-absolute end-0 m-2 msg_timeStamp'>{chat.messages.length ? chat.messages[chat.messages.length-1].timeStamp : ''}</span>
                         </li>
             })}
         </ul>
