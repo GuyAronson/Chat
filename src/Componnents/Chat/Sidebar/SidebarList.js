@@ -17,7 +17,7 @@ export function SidebarList({user, chats, changeChat, setUserChats}){
             partnerUsername = event.target.parentNode.childNodes[1].firstChild.data;
         else if(event.target.className === "chatPartner")
             partnerUsername = event.target.firstChild.data;
-        else if (event.target.className === "chat-box-header")
+        else if (event.target.className.includes("chat-box-header"))
             // div->div(partnerName)->data
             partnerUsername = event.target.childNodes[1].firstChild.data;
         else if(event.target.className === "last-message")
@@ -115,8 +115,9 @@ export function SidebarList({user, chats, changeChat, setUserChats}){
 
     return (<>
         {/* The chats list on the left side */}
-        <ul className='list-group chat-sidebar'>
-            <li className = 'list-group-item d-flex justify-content-between align-items-stretch'>
+        <div className='chat-sidebar'>
+        <ul className='list-group'>
+            <li className = 'list-group-item d-flex justify-content-between align-items-stretch sidebar-header'>
                 <img className='profile-pic' src={user.getPicture} alt= "Bruh.."/>
                 <span className="header-username">{user.getNickName}</span>
                 {/* Button to add chats */}
@@ -142,6 +143,7 @@ export function SidebarList({user, chats, changeChat, setUserChats}){
                         </li>
             })}
         </ul>
+        </div>
     </>);
 }
 

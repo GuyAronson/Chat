@@ -208,6 +208,18 @@ transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) sk
   overflow-y: scroll;
   border: 1px solid rgb(210,210,210);
 }
+.list-group{
+  height: 500px;
+}
+/* in order to make the header fixed to the top */
+/* .sidebar-header{
+  position: fixed;
+  z-index: 2;
+
+}
+li:nth-child(2).chat-item{
+  margin-top:70px;
+} */
 #insert-chat-popover{
   padding:10px;
   text-align-last: center;
@@ -245,7 +257,7 @@ transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) sk
   height: 65vh;
   overflow-y: scroll;
   /* padding: 20px; */
-  background-image: url(../public/Pictures/chat-wallpaper.jpg);
+  background-image: url(../public/pictures/chat-wallpaper.jpg);
   background-repeat: no-repeat;
   background-clip: border-box;
   background-size:cover;
@@ -254,6 +266,9 @@ transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) sk
 
 
 /*************** Messages: ***************/
+.msg_record , .msg_vid, .msg_img{
+  width: -webkit-fill-available;
+}
 .msg-block{
   display:block;
   height: auto;
