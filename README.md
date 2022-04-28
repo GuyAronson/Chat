@@ -1,6 +1,6 @@
 # Talk To Me Bro
 
-[![Demo CountPages alpha](public/appDemo.gif)]
+![Demo CountPages alpha](public/appDemo.gif)
 
 ## Installation and getting started
 1) First make sure you have react install on your device
@@ -20,7 +20,7 @@ yarn build
 and then again:
 ```bash
 npm start
-#
+# or
 yarn start
 ```
 
@@ -91,5 +91,5 @@ As a result the client side is not aware of the way it recives and sends informa
 in the future without, hopefully, having to change the code.
 
 ## Authors
-Idan Ziv
+Idan Ziv\
 Guy Aronson
