@@ -1,6 +1,6 @@
 # Talk To Me Bro
 
-![Alt text](appDemo.gif)
+![Uploading appDemo.gif…]()
 
 ## Installation and getting started
 1) First make sure you have react install on your device
