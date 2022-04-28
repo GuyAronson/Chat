@@ -1,6 +1,6 @@
 # Talk To Me Bro
 
-![Uploading appDemo.gif…]()
+<video width="600" src="public/appDemo.gif">
 
 ## Installation and getting started
 1) First make sure you have react install on your device
