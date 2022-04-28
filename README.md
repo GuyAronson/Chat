@@ -68,9 +68,11 @@ In React, hooks are a new feature that enables you control and manipulate state 
 The hooks were helpful to when we needed to share information between different componenets of the app:
 
 We used the useState hook to pass the logged user to the Chat page:
+
 <img width="400" alt="useState example" src="public/useStateExample.png">
 
-We also used the useEffect to render the app on the events of sending a message or changing/adding a chat:
+We also used the useEffect to render the app on the events of sending a message or changing/adding a chat:\n
+
 <img width="400" alt="useEffect example" src="public/useEffectExample.png">
 
 ### React Routes
