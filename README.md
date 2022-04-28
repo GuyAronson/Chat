@@ -1,6 +1,6 @@
 # Talk To Me Bro
 
-![](appDemo.gif)
+![Alt text](appDemo.gif)
 
 ## Installation and getting started
 1) First make sure you have react install on your device
@@ -66,8 +66,10 @@ As of now, the chat supports the following types of messages:
 ### React Hooks
 In React, hooks are a new feature that enables you control and manipulate state and other features without the use of classes.
 The hooks were helpful to when we needed to share information between different componenets of the app:
+
 We used the useState hook to pass the logged user to the Chat page:
 <img width="400" alt="useState example" src="public/useStateExample.png">
+
 We also used the useEffect to render the app on the events of sending a message or changing/adding a chat:
 <img width="400" alt="useEffect example" src="public/useEffectExample.png">
 
