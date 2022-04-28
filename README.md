@@ -1,6 +1,6 @@
 # Talk To Me Bro
 
-<video width="600" src="public/appDemo.gif">
+[![Demo CountPages alpha](public/appDemo.gif)]
 
 ## Installation and getting started
 1) First make sure you have react install on your device
