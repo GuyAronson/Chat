@@ -1,0 +1,65 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+/*************** logo and top container ***************/
+#top-container {
+    width: 100%;
+    padding-bottom: 11%;
+    background-color: #8eb490;
+}
+
+#logo {
+    font-family: 'Lobster', cursive;
+    position: absolute;
+    left: 2%;
+}
+
+#logo h1 {
+    color: #D5E2D6;
+    text-align: center;
+    line-height: 22px;
+    margin-top: -120px;
+    margin-right: 10px;
+    -moz-transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);
+    -webkit-transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);
+    -o-transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);
+    -ms-transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);
+    transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);
+    /*-----------------------*/
+    text-shadow: 1px 1px #4A744D, 2px 2px #4A744D, 3px 3px #4A744D, 4px 4px #4A744D, 5px 5px #4A744D, 6px 6px #4A744D, 7px 7px #4A744D, 8px 8px #4A744D, 9px 9px #4A744D, 10px 10px #4A744D, 11px 11px #4A744D, 12px 12px #4A744D, 13px 13px #4A744D, 14px 14px #4A744D, 15px 15px #4A744D, 16px 16px #4A744D, 17px 17px #4A744D;
+}
+
+#logo span:nth-child(1), span:nth-child(7) {
+    font-size: 100%;
+}
+
+#logo span:nth-child(3), span:nth-child(5) {
+    font-size: 85%;
+}
+
+#logo span:nth-child(5) {
+    margin-left: 15%;
+}
+
+#logo-circle {
+    height: 140px;
+    width: 150px;
+    border-radius: 100%;
+    margin: auto;
+    background: #4E8953;
+}
