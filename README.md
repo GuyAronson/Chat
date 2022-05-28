@@ -1,5 +1,6 @@
 # Talk To Me Bro
-
+This is the submition of assignment 2. In order to access the code written for the submition of assignment 1
+Switch to the branch 'main'.
 ## Getting Started
 ### Chat UI - React
 The chat UI runs on port 3000.
@@ -37,9 +38,7 @@ In order to change the server you should change the DbContext service defined in
 In the case of changing the DbContext, you must define its connection string.
 The string connection can be found in appsettings.json file of the project:
 <img width="400" alt="Connection String" src="public/pictures/ConnectionString.png">
-
-**NOTE: Each project has its own files, make sure to apply changes to each project -**
-
+Each project has its own files, make sure to apply changes to each project
 ## Authors
 Idan Ziv
 Guy Aronson
