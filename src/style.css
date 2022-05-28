@@ -1,0 +1,408 @@
+@import url(https://fonts.googleapis.com/css?family=Lobster);
+
+#register-button {
+  margin-right: 30px;
+}
+body{
+  width:100%;
+  height:100%;
+}
+/*************** logo and top container ***************/
+#top-container{  
+    width:100%;
+    padding-bottom:11%;
+    background-color: #8eb490;    
+}
+#logo{ 
+    font-family: 'Lobster', cursive;
+    position: absolute;
+    left: 2%;
+}
+
+#logo h1 {
+  color: #D5E2D6;
+  text-align: center;
+  line-height: 22px;
+  margin-top: -120px;
+  margin-right: 10px;
+  -moz-transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);
+-webkit-transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);
+-o-transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);
+-ms-transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);
+transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);
+  /*-----------------------*/
+  text-shadow: 1px 1px #4A744D, 2px 2px #4A744D, 3px 3px #4A744D, 4px 4px #4A744D, 5px 5px #4A744D, 6px 6px #4A744D, 7px 7px #4A744D, 8px 8px #4A744D, 9px 9px #4A744D, 10px 10px #4A744D, 11px 11px #4A744D, 12px 12px #4A744D, 13px 13px #4A744D, 14px 14px #4A744D, 15px 15px #4A744D, 16px 16px #4A744D, 17px 17px #4A744D;
+  
+}
+#logo span:nth-child(1), span:nth-child(7) { 
+  font-size:100%;
+}
+#logo span:nth-child(3), span:nth-child(5) { 
+  font-size:85%;
+}
+#logo span:nth-child(5) { 
+  margin-left: 15%; 
+}
+#logo-circle {
+    height: 140px;
+    width: 150px;
+    border-radius: 100%;
+    margin: auto;
+    background: #4E8953;
+}
+
+/*************** login and register forms ***************/
+.content{
+  padding-top: 20px;
+}
+.form{
+  position: absolute;
+  left:30%;
+  width:40%;
+  top:20%;
+  background-color: #dfdfdf;
+}
+.hr-trick {
+  display: flex;
+  /* flex-direction: row; */
+  margin: 15px auto;
+}
+.hr-trick:before, .hr-trick:after{
+  content: "";
+  flex: 1 1;
+  border-bottom: 1.5px solid;
+  margin: auto;
+}
+.hr-trick:before {
+  margin-right: 10px
+}
+.hr-trick:after {
+  margin-left: 10px
+}
+.tab{
+  margin-left:2em;
+}
+.tab-right{
+  margin-right:2em;
+}
+.error-message{
+  color:red;
+}
+.topic{
+  padding: 0.5em;
+  text-align:center;
+  text-decoration: underline;
+  opacity: 0.8;
+}
+.thumbnail{
+    border: 1px solid #ddd; /* Gray border */
+    border-radius: 4px;  /* Rounded border */
+    padding: 5px; /* Some padding */
+    width: 150px; /* Set a small width */
+}
+/* Add a hover effect (blue shadow) */
+.thumbnail:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+/*************** chat screen ***************/
+#hello{
+  position: absolute;
+  top:0;
+  right:0;
+  margin-right: 10rem;
+  margin-top: 0.5rem;
+  font-weight: 600;
+  padding: 8px;
+  border: 2px solid black;
+  background-color: #D5E2D6;
+  font-size: 1rem;
+}
+
+#container-chat{
+  position: absolute;
+  left:35%;
+  width:40%;
+  top:25%;
+  background-color: #ffe1b5;
+}
+
+#container-recipients{
+  position: absolute;
+  left:20%;
+  width:20%;
+  top:25%;
+}
+.logout{
+  position: absolute;
+  top:0;
+  right:0;
+  margin-right: 4rem;
+  margin-top: 1rem;
+  font-weight: 600;
+  padding: 8px;
+  border: 2px solid black;
+  font-size: 1rem; 
+}
+#chat-page{
+  position: absolute;
+  top:12%;
+  margin:auto;
+  width: -webkit-fill-available;
+  /* background-color: red; */
+}
+/************** siderbar chats ***************/
+.chat-item{
+  cursor: pointer;
+}
+.chat-item:hover{
+  background-color: rgb(245,245,245);
+}
+.icon{
+  font-size: 1.5rem;
+}
+.list-group-item .icon-button{
+  top:0;
+  right:0;
+  padding:0;
+  width:30px;
+  height:30px;
+}
+.header-username{
+  font-weight: bold;
+  padding: 2% 5%;
+  font-size: 15px;
+  /* Adding 3 dots in the end if the username is too long */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.list-group-item{
+  padding: 8px 8px;
+}
+.list-group-item.active{
+  color:black;
+  background-color: rgb(220,220,220);
+  border-color: rgb(210,210,210);
+}
+.chatPartner{
+  font-weight: bold;
+  padding-left: 10px;
+  padding-top: 5px;
+  font-size: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* overflow-wrap: break-word; */
+}
+.last-message{
+  padding: 5px 0 0 10px;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width:60%;
+}
+.chat-sidebar{
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  border: 1px solid rgb(210,210,210);
+}
+.list-group{
+  height: 500px;
+}
+/* in order to make the header fixed to the top */
+/* .sidebar-header{
+  position: fixed;
+  z-index: 2;
+
+}
+li:nth-child(2).chat-item{
+  margin-top:70px;
+} */
+#insert-chat-popover{
+  padding:10px;
+  text-align-last: center;
+}
+#insert-chat-popover button, input{
+  margin-top:5px;
+}
+.profile-pic{
+  left:0;
+  border: 3px solid #aaa; /* Gray border */
+  border-radius: 50%;  /* Rounded border */
+  width: 50px; /* Set a small width */
+  height: 50px;
+}
+.profile-pic-small{
+  left:0;
+  border: 3px solid #aaa; /* Gray border */
+  border-radius: 50%;  /* Rounded border */
+  width: 50px; /* Set a small width */
+  height: 50px;
+}
+
+/*************** chat header ***************/
+#header-partner-uname{
+  font-weight: bold;
+  font-size: 20px;
+  padding-left: 20px;
+  padding-top: 25px;
+}
+
+/*************** chat iteself ***************/
+#chat-body{
+  background-color: rgb(250,250,250);
+  width: 100%;
+  height: 65vh;
+  overflow-y: scroll;
+  /* padding: 20px; */
+  background-image: url(chat-wallpaper.jpg);
+  background-repeat: no-repeat;
+  background-clip: border-box;
+  background-size:cover;
+  background-position: 0rem;
+}
+
+
+/*************** Messages: ***************/
+.msg_record , .msg_vid, .msg_img{
+  width: -webkit-fill-available;
+}
+.msg-block{
+  display:block;
+  height: auto;
+  /* overflow: hidden; */
+  /* overflow-wrap: break-word; 
+  white-space:pre-wrap; */
+  text-decoration: none;
+  clear:both;
+}
+.author_name{
+  font-weight: bold;
+}
+.msg_timeStamp{
+  font-weight: 500;
+  font-size: small;
+  padding-top: 5px;
+}
+.my_msg{
+  border: 2px solid #666;
+  background-color: #c1f1f1;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
+  display: table;
+  max-width: 40%;
+  min-width: 25%;
+}
+.my_msg ::after{
+  content: "";
+  clear: both;
+  display: table;
+}
+.my_msg .msg_timeStamp{
+  float: right;
+}
+
+.msg_img {
+  max-width: 300px;
+}
+
+.msg_vid {
+  max-width: 300px;
+}
+.their_msg{
+  border: 2px solid #666;
+  background-color: rgb(210,210,210);
+  border-radius: 10px;
+  padding: 10px;
+  margin-top:10px;
+  max-width: 40%;
+  min-width: 25%;
+  float:right;
+}
+.their_msg ::after{
+  content: "";
+  clear: both;
+  display: table;
+}
+.their_msg .author_name{
+  text-align: right;
+}
+.their_msg .msg_text , .msg_timeStamp{
+  direction:ltr;
+  text-align: left;
+}
+
+/* Chat Footer */
+#chat-footer{
+  width: 100%;
+  display:inline-block;
+  border: 0;
+  background-color: rgb(220,220,220);
+  height: 100%;
+  padding: 5px;
+}
+.send-button{
+  border-radius: 20px;
+  position: absolute;
+  margin-top: 5px;
+  right:0;
+  margin-right: 15px;
+}
+.msg-input{
+  display: inline;
+  width: 80%;
+  border-radius: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.upload-dropdown{
+  display:inline-block;
+  border-radius: 20px;
+  background-color: rgb(250,250,250);
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+
+ #fetch{
+  position: absolute;
+  top:0;
+  right:0;
+  margin-right: 3rem;
+  margin-top: 0.5rem;
+  font-weight: 600;
+  padding: 8px;
+   border: 2px solid black;
+   background-color: #D5E2D6;
+  font-size: 1rem;
+}
+
+ #rate{
+  position: absolute;
+  top:0;
+  left:0;
+  margin-left: 13rem;
+  margin-top: 0.5rem;
+  font-weight: 600;
+  padding: 8px;
+   border: 2px solid black;
+   background-color: #75AF52;
+  font-size: 1rem;
+}
+
+/*************** changes: ***************/
+.row{
+  --bs-gutter-x:0;
+}
+.dropdown-menu{
+  min-width: 0;
+}
+.dropdown-menu.show{
+  margin-bottom: 20px;
+  margin-left: -5px;
+}
+.dropdown{
+  display: inline;
+}

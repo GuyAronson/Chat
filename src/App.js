@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+// import 'bootstrap/dist/css/bootstrap.css'
+import React, { useState } from 'react';
+import './style.css'
+import { BrowserRouter, Routes, Route} from "react-router-dom";
+import Banner from "./Componnents/Homepage/Banner";
+import Layout from "./Componnents/Homepage/Layout";
+import RegisterPage from './Componnents/Homepage/Register/RegisterPage';
+import LoginPage from './Componnents/Homepage/Login/LoginPage'
+import ChatPage from './Componnents/Chat/ChatPage';
+import ErrorBoundary from './ErrorBoundary';
+
 
 function App() {
+  const [loggedUser, setLoggedUser] = useState(null);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Banner/>
+        <Routes>
+          <Route exact path="/" element={<Layout />} />
+          <Route path="/register" element={<RegisterPage setUser={setLoggedUser}/>} />
+          <Route path="/login" element={<LoginPage setUser={setLoggedUser}/>} />
+          <Route path="/chat/:username" element={<ChatPage loggedUser={loggedUser}/>} />
+        </Routes>
+    </BrowserRouter>
   );
 }
 
