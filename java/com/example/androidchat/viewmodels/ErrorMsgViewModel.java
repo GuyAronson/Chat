@@ -8,12 +8,12 @@ public class ErrorMsgViewModel extends ViewModel {
 
     public MutableLiveData<String> getErrorMsg() {
         if(errorMsg == null){
-            errorMsg = new MutableLiveData<>();
+            errorMsg = new MutableLiveData<String>();
         }
         return errorMsg;
     }
 
-    public void setErrorMsg(String errorMsg) {
-        this.errorMsg.setValue(errorMsg);
+    public void setErrorMsg(String msg) {
+        getErrorMsg().postValue(msg);
     }
 }
