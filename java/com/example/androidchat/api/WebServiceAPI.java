@@ -8,11 +8,13 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface WebServiceAPI {
     @GET("contacts")
@@ -60,12 +62,11 @@ public interface WebServiceAPI {
     Call<Void> trasnferMessage(String currentUser, String partner,@Body String data);
 
     /****** Login/Register ******/
-    /**********************************************
-     * BUG!!!! - cant have 2 @body in parameters
-     *********************************************/
-         @GET("login")
-    Call<Boolean> checkLogin(@Body String username,@Body String password);
+    @Headers({"Accept: application/json"})
+    @GET("login")
+//    Call<Boolean> checkLogin(@Body User user);
+    Call<Boolean> checkLogin(@Query("username") String username, @Query("password") String password);
 
     @POST("register")
-    Call<Void> register(@Body String username,@Body String nickname,@Body String password,@Body String email);
+    Call<Void> register(@Body User user);
 }

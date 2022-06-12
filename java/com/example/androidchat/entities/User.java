@@ -1,5 +1,6 @@
 package com.example.androidchat.entities;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -8,7 +9,7 @@ import java.util.List;
 
 @Entity
 public class User {
-    @PrimaryKey
+    @PrimaryKey @NonNull
     private String username;
     private String email;
     private String password;
@@ -53,6 +54,10 @@ public class User {
         email = email;
         nickname = nickname;
         password = password;
-//        chats = new ArrayList<>();
     }
+    public User(String username, String password){
+        username = username;
+        password = password;
+    }
+    public User(){}
 }

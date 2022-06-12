@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         app:backgroundTint="@color/green_theme"
-        android:text="@string/login_btn_loginbtn" />
+        android:text="@string/btn_loginbtn" />
 
     <View
         android:layout_width="200dp"
@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         app:backgroundTint="@color/grey"
-        android:text="@string/login_btn_registerBtn" />
+        android:text="@string/btn_registerBtn" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
