@@ -12,9 +12,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.androidchat.api.API;
+import com.example.androidchat.entities.User;
 import com.example.androidchat.viewmodels.ErrorMsgViewModel;
 
 import java.util.Objects;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -35,19 +41,45 @@ public class RegisterActivity extends AppCompatActivity {
 
         Button register = findViewById(R.id.btnRegister);
         register.setOnClickListener(v ->{
-            EditText username = findViewById(R.id.register_et_username);
-            EditText password = findViewById(R.id.register_et_password);
-            EditText confirmPassword = findViewById(R.id.register_et_passwordConfirm);
-            boolean result = inputValidations(username.getText().toString(), password.getText().toString(),
-                                                confirmPassword.getText().toString());
+            EditText et_username = findViewById(R.id.register_et_username);
+            EditText et_nickname = findViewById(R.id.register_et_nickname);
+            EditText et_password = findViewById(R.id.register_et_password);
+            EditText et_confirmPassword = findViewById(R.id.register_et_passwordConfirm);
+            String username = et_username.getText().toString();
+            String nickname = et_nickname.getText().toString();
+            String password = et_password.getText().toString();
+            String confirmPassword = et_confirmPassword.getText().toString();
+            boolean result = inputValidations(username, password, confirmPassword);
 
             /**************************************************************************
-             * Need to create a POST request to the api to submit the registeration
-             * Then move to the contactsActivity
-             * Then fetch all the user's data to the Daos
+             * fetch all the user's data to the Daos
              *************************************************************************/
-            if(result)
-                Log.i("RegisterActivity","Register is VALID.");
+            if(result) {
+                Log.i("RegisterActivity", "Register is VALID.");
+
+//                Call<Void> call = API.get().register(new User(username, nickname, password));
+                Call<Void> call = API.get().register(username, nickname, password);
+                call.enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        Log.i("RegisterResponse", response.message());
+                        Log.i("RegisterResponse_code", Integer.toString(response.code()));
+                        if(response.code() != 200){
+                            errorViewModel.setErrorMsg("Bad Request");
+                        } else {
+                            Intent contactsIntent = new Intent(getApplicationContext(), ContactsActivity.class);
+                            contactsIntent.putExtra("username", username);
+                            startActivity(contactsIntent);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        Log.i("RegisterFailure", t.getMessage());
+                        errorViewModel.setErrorMsg("Bad Request");
+                    }
+                });
+            }
             else    Log.i("RegisterActivity","Register is INVALID.");
         });
 

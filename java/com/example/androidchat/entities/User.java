@@ -58,6 +58,12 @@ public class User {
     public User(String username, String password){
         username = username;
         password = password;
+        nickname = email = "";
+    }
+    public User(String username,String nickname, String password){
+        username = username;
+        nickname = nickname;
+        password = password;
     }
     public User(){}
 }

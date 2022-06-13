@@ -68,5 +68,7 @@ public interface WebServiceAPI {
     Call<Boolean> checkLogin(@Query("username") String username, @Query("password") String password);
 
     @POST("register")
-    Call<Void> register(@Body User user);
+//    Call<Void> register(@Body User user);
+    Call<Void> register(@Query("username") String username, @Query("nickname") String nickname,
+                        @Query("password") String password);
 }
