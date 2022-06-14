@@ -13,7 +13,6 @@ public class Chat {
     // username
     private String userID;
 //    private User user;
-    // partner username
     private String partnerID;
 //    private Partner partner;
 //        private List<Message> messages;

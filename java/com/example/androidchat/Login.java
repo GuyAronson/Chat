@@ -46,6 +46,10 @@ public class Login extends AppCompatActivity {
 
             EditText et_username = findViewById(R.id.editTextUsername);
             EditText et_password = findViewById(R.id.editTextPassword);
+
+            /**
+             * Access to the DB should not be from an activity in the Client-side - consider changing it
+             */
             Call<Boolean> call = API.get().checkLogin(et_username.getText().toString(),
                                                         et_password.getText().toString());
             call.enqueue(new Callback<Boolean>() {
@@ -65,7 +69,7 @@ public class Login extends AppCompatActivity {
                     recreate();
                 }
             });
-
+            //....
         });
         Button btnRegister = findViewById(R.id.btnRegister);
         btnRegister.setOnClickListener(v ->{

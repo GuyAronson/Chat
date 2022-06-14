@@ -1,5 +1,6 @@
 package com.example.androidchat.daos;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -20,7 +21,7 @@ public interface ChatDao {
     Chat get(String id);
 
     @Query("SELECT * FROM Chat WHERE userID = :username")
-    List<Chat> getUserChats(String username);
+    LiveData<List<Chat>> getUserChats(String username);
 
     @Insert
     void insert(Chat chat);
