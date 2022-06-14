@@ -6,17 +6,46 @@
     android:layout_height="match_parent"
     tools:context=".ContactsActivity">
 
-    <TextView
-        android:id="@+id/hello"
+    <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background = "@color/cardview_light_background"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:paddingStart="20dp"
+            android:background="@color/teal_700">
+
+            <TextView
+                android:id="@+id/logged_in_user"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_vertical"
+                android:text="Hello Idan!"
+                android:textSize="25dp"
+                tools:ignore="MissingConstraints" />
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/chat_list"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            tools:ignore="MissingConstraints"
+            tools:listitem="@layout/chat_item"></ListView>
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addContactButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@color/green_theme"
-        android:text="Hey"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:textSize="40dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/ic_add_chat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
