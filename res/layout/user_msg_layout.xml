@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="2dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="50dp"
+        android:background="@color/green_theme"
+        android:id="@+id/msg_container"
+        tools:ignore="MissingConstraints"
+        android:maxWidth="250dp">
+
+        <TextView
+            android:id="@+id/usrMsg_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sender Message Display Here "
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:paddingLeft="8dp"
+            android:paddingRight="40dp"
+            android:paddingBottom="7dp"
+            android:paddingTop="7dp">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/usrMsg_time"
+            android:textSize="10sp"
+            android:layout_toRightOf="@id/usrMsg_data"
+            android:layout_marginLeft="-40dp"
+            android:layout_alignBottom="@id/usrMsg_data"
+            android:text="20:09"
+            android:padding="7dp"
+            android:textColor="@color/black" />
+
+
+
+
+
+
+
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
