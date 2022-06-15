@@ -1,0 +1,73 @@
+package com.example.androidchat.reposittories;
+
+import android.content.Context;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
+import com.example.androidchat.api.API;
+import com.example.androidchat.api.WebServiceAPI;
+import com.example.androidchat.clientdb.ClientDB;
+import com.example.androidchat.daos.ChatDao;
+import com.example.androidchat.entities.Chat;
+import com.example.androidchat.entities.Partner;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ContactsRepository {
+    private ClientDB db;
+    private ChatDao chatDao;
+    private WebServiceAPI api = API.get();
+    private String loggedUser;
+    private ChatListData chats = new ChatListData();
+
+    class ChatListData extends MutableLiveData<List<Chat>> {
+        public ChatListData() {
+            super();
+            setValue(new ArrayList<>());
+        }
+
+        @Override
+        protected void onActive() {
+            super.onActive();
+
+            new Thread( () -> {
+                chats.postValue(chatDao.getUserChats(loggedUser));
+            });
+        }
+    }
+
+    public ContactsRepository(String username, Context context) {
+        this.loggedUser = username;
+        this.db = ClientDB.getInstance(context);
+    }
+
+    public LiveData<List<Chat>> getAll() {
+        return this.chats;
+    }
+
+    /**
+     * This function basically is called from the view model and it creates an api request
+     * Note: we assume that the proper validation occurs before this method is being invoked
+     * The api, when it is finished does not have to update
+     * @param p
+     */
+    public void AddChat(@NonNull Partner p) {
+        if (p.getNickname() != null) {
+            // add the repository to the api request and in a thread there update the data
+            this.api.sendInvitation(this.loggedUser, p.getUsername(), p.getServerAddress(), p.getNickname(), this);
+        } else {
+            this.api.sendInvitation(this.loggedUser, p.getUsername(), p.getServerAddress(), p.getNickname(), this);
+        }
+        // update data
+        Chat c = new Chat(loggedUser, p.getUsername());
+        List<Chat> newList = this.chats.getValue();
+        newList.add(c);
+        chats.setValue(newList);
+        new Thread(() -> {
+            chatDao.insert(c);
+        }).start();
+    }
+}
