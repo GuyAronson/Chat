@@ -14,18 +14,17 @@ import com.example.androidchat.entities.*;
 
 @Database(entities = {User.class, Chat.class, Message.class, Partner.class}, version = 1)
 public abstract class ClientDB extends RoomDatabase{
-    private static ClientDB instance = null;
-
+    public static ClientDB instance;
     public abstract UserDao userDao();
     public abstract ChatDao chatDao();
     public abstract MessageDao messageDao();
     public abstract PartnerDao partnerDao();
 
-    public static synchronized ClientDB getInstance(Context context){
-        if(instance == null){
-            instance = Room.databaseBuilder(context.getApplicationContext(), ClientDB.class, "client_database")
-                    .fallbackToDestructiveMigration()
-                    .build();
+    public static ClientDB getInstance(Context context) {
+        if (instance != null) {
+            instance = Room.databaseBuilder(context, ClientDB.class, "ClientDB")
+                    .allowMainThreadQueries().
+                    build();
         }
         return instance;
     }
