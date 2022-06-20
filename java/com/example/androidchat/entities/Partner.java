@@ -7,48 +7,48 @@ import androidx.room.PrimaryKey;
 @Entity
 public class Partner {
     @PrimaryKey @NonNull
-    private String username;
-    private String nickname;
+    private String Username;
+    private String Nickname;
     // This is the server address that this user belongs to
-    private String serverAddress;
+    private String ServerAddress;
 
     public String getUsername() {
-        return username;
+        return Username;
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.Username = username;
     }
 
     public String getNickname() {
-        return nickname;
+        return Nickname;
     }
 
     public void setNickname(String nickname) {
-        this.nickname = nickname;
+        this.Nickname = nickname;
     }
 
     public String getServerAddress() {
-        return serverAddress;
+        return ServerAddress;
     }
 
     public void setServerAddress(String serverAddress) {
-        this.serverAddress = serverAddress;
+        this.ServerAddress = serverAddress;
     }
 
     public Partner(String username, String nickname, String serverAddress)
     {
-        username = username;
-        nickname = nickname;
-        serverAddress = serverAddress;
+        this.Username = username;
+        this.Nickname = nickname;
+        this.ServerAddress = serverAddress;
     }
     public Partner()
     {
-        username = nickname = serverAddress = null;
+        this.Username = this.Nickname = this.ServerAddress = null;
     }
     @Override
     public String toString()
     {
-        return this.username+ " : " + this.nickname + " : " + this.serverAddress;
+        return this.Username + " : " + this.Nickname + " : " + this.ServerAddress;
     }
 }

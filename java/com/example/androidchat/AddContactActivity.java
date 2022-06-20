@@ -1,5 +1,6 @@
 package com.example.androidchat;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -9,12 +10,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.androidchat.entities.Partner;
+import com.example.androidchat.repositories.ContactsRepository;
 import com.example.androidchat.viewmodels.ContactsViewModel;
 import com.example.androidchat.viewmodels.ContactsViewModelFactory;
 
 public class AddContactActivity extends AppCompatActivity {
     private String loggedUser;
-    private ContactsViewModel contactsVM;
+    private ContactsRepository contactsRepo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +24,7 @@ public class AddContactActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_contact);
         Intent i = getIntent();
         this.loggedUser = i.getStringExtra("username");
-        this.contactsVM = new ViewModelProvider(this,
-                new ContactsViewModelFactory(this.loggedUser, getApplicationContext()))
-                .get(ContactsViewModel.class);
+
         Button addBtn = findViewById(R.id.add_submitBtn);
         addBtn.setOnClickListener( view -> {
             EditText partnerName = findViewById(R.id.add_Username);
@@ -33,13 +33,20 @@ public class AddContactActivity extends AppCompatActivity {
             String name = partnerName.getText().toString();
             String address = partnerAddress.getText().toString();
             String nickname;
+            if(name.equals(loggedUser))
+                return;
             if (!partnerNickname.getText().toString().isEmpty()) {
                 nickname = partnerNickname.getText().toString();
             } else {
-                nickname = null;
+                nickname = name;
             }
-            Partner p = new Partner(name,nickname, address);
-            contactsVM.add(p);
+
+            Intent data = new Intent();
+            data.putExtra("new_contact_username", name);
+            data.putExtra("new_contact_nickname", nickname);
+            data.putExtra("new_contact_server_address", address);
+            // Activity finished return ok, return the data
+            setResult(Activity.RESULT_OK, data);
             finish();
         });
 

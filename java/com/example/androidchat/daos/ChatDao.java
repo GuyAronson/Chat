@@ -1,18 +1,21 @@
 package com.example.androidchat.daos;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
 import com.example.androidchat.entities.Chat;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Dao
-public interface ChatDao {
+public interface ChatDao{
 
     @Query("SELECT * FROM Chat")
     List<Chat> getAll();
@@ -21,9 +24,9 @@ public interface ChatDao {
     Chat get(String id);
 
     @Query("SELECT * FROM Chat WHERE userID = :username")
-    LiveData<List<Chat>> getUserChats(String username);
+    List<Chat> getUserChats(String username);
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Chat chat);
 
     @Update
@@ -31,4 +34,7 @@ public interface ChatDao {
 
     @Delete
     void delete(Chat chat);
+
+    @Query("DELETE FROM Chat")
+    public void clearTable();
 }

@@ -10,7 +10,7 @@
         android:layout_alignParentEnd="true"
         android:background="@color/greyer"
         android:id="@+id/msg_container"
-        android:maxWidht="250dp">
+        android:maxWidth="250dp">
 
         <TextView
             android:layout_width="wrap_content"

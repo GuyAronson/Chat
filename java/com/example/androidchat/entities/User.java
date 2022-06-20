@@ -4,66 +4,63 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Entity
 public class User {
     @PrimaryKey @NonNull
-    private String username;
-    private String email;
-    private String password;
-    private String nickname;
+    private String Username;
+    private String Email;
+    private String Password;
+    private String Nickname;
 //    public List<Chat> chats;
 
     public void setUsername(String username) {
-        this.username = username;
+        this.Username = username;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.Email = email;
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.Password = password;
     }
 
     public void setNickname(String nickname) {
-        this.nickname = nickname;
+        this.Nickname = nickname;
     }
 
     public String getUsername() {
-        return username;
+        return Username;
     }
 
     public String getEmail() {
-        return email;
+        return Email;
     }
 
     public String getPassword() {
-        return password;
+        return Password;
     }
 
     public String getNickname() {
-        return nickname;
+        return Nickname;
     }
 
     public User(String username, String email, String password, String nickname)
     {
-        username = username;
-        email = email;
-        nickname = nickname;
-        password = password;
+        this.Username = username;
+        this.Nickname = nickname;
+        this.Password = password;
+        this.Email = email;
     }
     public User(String username, String password){
-        username = username;
-        password = password;
-        nickname = email = "";
+        this.Username = username;
+        this.Password = password;
+        Nickname = Email = "";
     }
     public User(String username,String nickname, String password){
-        username = username;
-        nickname = nickname;
-        password = password;
+        this.Username = username;
+        this.Nickname = nickname;
+        this.Password = password;
     }
     public User(){}
 }

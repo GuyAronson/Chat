@@ -1,5 +1,6 @@
 package com.example.androidchat.entities;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -7,17 +8,16 @@ import java.util.Date;
 
 @Entity
 public class Message {
-
-    @PrimaryKey(autoGenerate = true)
-    private int id;
+    @PrimaryKey @NonNull
+    private String ID;
     // The username of the user who sent the message
     private String Author;
     private String Time;
     private String Data;
     private String Type;
-    private String ChatID;
+    private final String ChatID;
 
-    public void setId(int id) {
+    public void setID(String ID) {
 //        this.id = id;
     }
 
@@ -29,8 +29,8 @@ public class Message {
 //        ChatID = chatID;
     }
 
-    public int getId() {
-        return id;
+    public String getID() {
+        return ID;
     }
 
     public String getTime() {
@@ -67,6 +67,7 @@ public class Message {
 
     public Message(String author, String data, String type, String chatid)
     {
+        ID = Utils.GenerateRandomID();
         Author = author;
         Data = data;
         Type = type;
@@ -76,6 +77,8 @@ public class Message {
     }
     public Message()
     {
+        ID = Utils.GenerateRandomID();
         Author = Data = Type = ChatID = "";
+
     }
 }

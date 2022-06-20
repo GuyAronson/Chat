@@ -85,14 +85,14 @@
         <ImageButton
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_send_msg"
             android:padding="5dp"
-            android:backgroundTint="@android:color/transparent"
-            android:background="@android:color/transparent"
-            android:id="@+id/chatRm_sendMsg"
-            android:layout_gravity="center"
-            android:scaleType="centerCrop"
-            app:tint="@color/white">
+        android:backgroundTint="@android:color/transparent"
+        android:background="@android:color/transparent"
+        android:id="@+id/chatRm_sendMsg"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"
+        app:tint="@color/white">
+        <!--            android:src="@drawable/ic_send_msg"-->
 
         </ImageButton>
 

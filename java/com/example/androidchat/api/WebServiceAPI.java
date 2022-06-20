@@ -2,6 +2,8 @@ package com.example.androidchat.api;
 
 import com.example.androidchat.entities.*;
 
+import java.io.Serializable;
+import java.security.SecureRandom;
 import java.util.List;
 
 import retrofit2.Call;
@@ -21,7 +23,7 @@ public interface WebServiceAPI {
     Call<List<Partner>> getAllContacts(String currentUser);
 
     @POST("contacts")
-    Call<Void> addContact(String currentUser, @Body Partner partner);
+    Call<Void> addContact(@Query("currentUser") String currentUser, @Body Partner partner);
 
     @GET("contacts/{id}")
     Call<Partner> get(String currentUser, @Path("id") String partnerUsername);
@@ -30,7 +32,7 @@ public interface WebServiceAPI {
     Call<Void> editContact(String currentUser, @Path("id") String partnerUsername, @Body Partner partner);
 
     @DELETE("contacts/{id}")
-    Call<Void> deleteContact(String currentUser, @Path("id") String partnerUsername);
+    Call<Void> deleteContact(@Query("currentUser") String currentUser, @Path("id") String partnerUsername);
 
     @GET("contacts/{id}/messages")
     Call<List<Message>> getMessages(String currentUser, @Path("id") String partnerUsername);
@@ -47,15 +49,17 @@ public interface WebServiceAPI {
     @DELETE("contacts/{id}/messages/{id2}")
     Call<List<Message>> deleteMessageByID(String currentUser, @Path("id") String partnerUsername, @Path("id2") String messageID);
 
-    @GET("chats")
-    Call<List<Chat>> getUserChats(String currentUser);
+    @GET("contacts/chats")
+    Call<List<Chat>> getUserChats(@Query("currentUser") String currentUser);
 
     /****** Invitation ******/
     @POST("invitations")
-    Call<Void> sendInvitation(String currentUser, @Body String partner,@Body String serverAddress,@Body String nickname);
+    Call<Void> sendInvitation(@Query("username") String currentUser, @Query("partner") String partner,
+                              @Query("serverAdd") String serverAddress,@Query("nickname") String nickname);
 
     @POST("invitations")
-    Call<Void> sendInvitation(String currentUser,@Body String partner,@Body String serverAddress);
+    Call<Void> sendInvitation(@Query("username") String currentUser, @Query("partner") String partner,
+                              @Query("serverAdd") String serverAddress);
 
     /****** Transfer ******/
     @POST("transfer")

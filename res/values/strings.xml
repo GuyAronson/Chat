@@ -5,6 +5,7 @@
     <string name="btn_loginbtn">Login</string>
     <string name="btn_registerBtn">Register</string>
     <string name="apiUrl">http://10.0.2.2:7000/api/</string>
+    <string name="serverAddress">http://10.0.2.2:7000</string>
     <string name="editText_nickname">Nickname</string>
     <string name="editText_passwordConfirm">Password Confirmation</string>
     <string name="btn_upload">Upload</string>

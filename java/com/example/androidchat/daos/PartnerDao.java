@@ -16,7 +16,7 @@ public interface PartnerDao {
     @Query("SELECT * FROM Partner")
     List<Partner> getAll();
 
-    @Query("SELECT * FROM Partner WHERE username = :username")
+    @Query("SELECT * FROM Partner WHERE Username = :username")
     Partner get(String username);
 
     @Insert

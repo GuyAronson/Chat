@@ -16,7 +16,7 @@ public interface MessageDao {
     @Query("SELECT * FROM Message")
     List<Message> getAll();
 
-    @Query("SELECT * FROM Message WHERE id = :id")
+    @Query("SELECT * FROM Message WHERE ID = :id")
     Message get(String id);
 
     @Query("SELECT * FROM Message WHERE ChatID = :chatid")

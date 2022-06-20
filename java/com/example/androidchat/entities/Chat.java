@@ -1,54 +1,59 @@
 package com.example.androidchat.entities;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Chat {
-    @PrimaryKey(autoGenerate = true)
-    private int id;
+    @PrimaryKey @NonNull
+
+    private String ID;
     // username
-    private String userID;
+    private String UserID;
 //    private User user;
-    private String partnerID;
+    private String PartnerID;
 //    private Partner partner;
 //        private List<Message> messages;
 
-    public int getId() {
-        return id;
+    public String getID() {
+        return ID;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setID(String id) {
+        this.ID = id;
     }
 
     public String getUserID() {
-        return userID;
+        return UserID;
     }
 
     public void setUserID(String userID) {
-        this.userID = userID;
+        this.UserID = userID;
     }
 
     public String getPartnerID() {
-        return partnerID;
+        return PartnerID;
     }
 
     public void setPartnerID(String partnerID) {
-        this.partnerID = partnerID;
+        this.PartnerID = partnerID;
     }
 
     public Chat(String userID, String partnerID)
     {
-        userID = userID;
-        partnerID = partnerID;
+        this.ID = Utils.GenerateRandomID();
+        this.UserID = userID;
+        this.PartnerID = partnerID;
 //        messages = new Messages();
     }
     public Chat(){
-        userID = "";
-        partnerID = "";
+        this.ID = Utils.GenerateRandomID();
+        UserID = "";
+        PartnerID = "";
     }
 }
