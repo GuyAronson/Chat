@@ -9,7 +9,7 @@ import java.util.Date;
 @Entity
 public class Message {
     @PrimaryKey @NonNull
-    private String ID;
+    private final String ID;
     // The username of the user who sent the message
     private String Author;
     private String Time;
@@ -22,7 +22,7 @@ public class Message {
     }
 
     public void setTime(String time) {
-//        Time = time;
+        Time = time;
     }
 
     public void setChatID(String chatID) {
@@ -73,7 +73,9 @@ public class Message {
         Type = type;
         ChatID = chatid;
         Date d = new Date();
-        Time = d.toString();
+        String t =d.toString();
+        int k = t.indexOf(':');
+        Time = t.substring(k-2,k+2);
     }
     public Message()
     {

@@ -14,7 +14,7 @@ public class API {
     public static Retrofit getRetrofit(){
         if(retrofit == null){
             // Creating retrofit object for creating the API - with the localhost url
-            retrofit = new Retrofit.Builder().baseUrl(myServerAddress)
+            retrofit = new Retrofit.Builder().baseUrl(myApiUrl)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
             api = retrofit.create(WebServiceAPI.class);

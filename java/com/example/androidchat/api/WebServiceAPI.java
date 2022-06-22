@@ -20,7 +20,7 @@ import retrofit2.http.Query;
 
 public interface WebServiceAPI {
     @GET("contacts")
-    Call<List<Partner>> getAllContacts(String currentUser);
+    Call<List<Partner>> getAllContacts(@Query("currentUser") String currentUser);
 
     @POST("contacts")
     Call<Void> addContact(@Query("currentUser") String currentUser, @Body Partner partner);
@@ -35,10 +35,10 @@ public interface WebServiceAPI {
     Call<Void> deleteContact(@Query("currentUser") String currentUser, @Path("id") String partnerUsername);
 
     @GET("contacts/{id}/messages")
-    Call<List<Message>> getMessages(String currentUser, @Path("id") String partnerUsername);
+    Call<List<Message>> getMessages(@Path("id") String partnerUsername,@Query("currentUser") String currentUser);
 
     @POST("contacts/{id}/messages")
-    Call<Void> addMessage(String currentUser, @Path("id") String partnerUsername, @Body String data);
+    Call<Void> addMessage(@Path("id") String partnerUsername, @Query("currentUser") String currentUser, @Query("data") String data);
 
     @GET("contacts/{id}/messages/{id2}")
     Call<List<Message>> getMessageByID(String currentUser, @Path("id") String partnerUsername, @Path("id2") String messageID);
@@ -63,7 +63,8 @@ public interface WebServiceAPI {
 
     /****** Transfer ******/
     @POST("transfer")
-    Call<Void> trasnferMessage(String currentUser, String partner,@Body String data);
+    Call<Void> trasnferMessage(@Query("username") String username,@Query("partner") String partner,
+                               @Query("data") String data);
 
     /****** Login/Register ******/
     @Headers({"Accept: application/json"})

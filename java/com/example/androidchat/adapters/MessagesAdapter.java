@@ -13,20 +13,21 @@ import com.example.androidchat.R;
 import com.example.androidchat.entities.Message;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MessagesAdapter extends RecyclerView.Adapter {
-    private Context context;
-    private ArrayList<Message> messages;
-    private String loggedUser;
-    private String partnerID;
-    private static int USER_MSG = 1;
-    private static int PARTNER_MSG = 2;
+    private final Context context;
+    private final List<Message> messages;
+    private final String loggedUser;
+    private final String partnerID;
+    private static final int USER_MSG = 1;
+    private static final int PARTNER_MSG = 2;
 
-    public MessagesAdapter(Context context, ArrayList<Message> messages, String loogedUser,
+    public MessagesAdapter(Context context, List<Message> messages, String loggedUser,
                            String partnerID) {
         this.context = context;
         this.messages = messages;
-        this.loggedUser = loogedUser;
+        this.loggedUser = loggedUser;
         this.partnerID = partnerID;
     }
 
@@ -34,10 +35,10 @@ public class MessagesAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (viewType == USER_MSG) {
-            View view = LayoutInflater.from(context).inflate(R.layout.partner_msg_layout, parent, false);
+            View view = LayoutInflater.from(context).inflate(R.layout.user_msg_layout, parent, false);
             return new UserMessageHolder(view);
         } else { // partner message
-            View view = LayoutInflater.from(context).inflate(R.layout.user_msg_layout, parent, false);
+            View view = LayoutInflater.from(context).inflate(R.layout.partner_msg_layout, parent, false);
             return new PartnerMessageHolder(view);
         }
     }
@@ -57,9 +58,7 @@ public class MessagesAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public int getItemCount() {
-        return messages.size();
-    }
+    public int getItemCount() {return messages != null ? messages.size() : 0; }
 
     @Override
     public int getItemViewType(int position) {

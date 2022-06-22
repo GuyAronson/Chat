@@ -15,13 +15,11 @@ import java.util.List;
 
 public class ContactsViewModel extends ViewModel{
     private ContactsRepository contactsRepo;
-//    private LiveChats chats;
     private LiveData<List<Chat>> chats;
 
     public ContactsViewModel(Context context, String username) {
         this.contactsRepo = new ContactsRepository(username, context);
         chats = this.contactsRepo.getAll();
-//        chats = new LiveChats(this.contactsRepo.getAll());
     }
 
     public LiveData<List<Chat>> getAll() {
@@ -32,13 +30,4 @@ public class ContactsViewModel extends ViewModel{
         this.contactsRepo.AddChat(p);
     }
 
-//    class LiveChats extends LiveData<List<Chat>> implements Serializable {
-//        public LiveChats() {
-//            super();
-//        }
-//        public LiveChats(LiveData<List<Chat>> chats) {
-//            super();
-//            this.setValue(chats.getValue());
-//        }
-//    }
 }

@@ -55,10 +55,14 @@ public class Login extends AppCompatActivity {
             call.enqueue(new Callback<Boolean>() {
                 @Override
                 public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-                    Log.i("Login", response.body().toString());
-                    Intent contactsIntent =  new Intent(getApplicationContext(), ContactsActivity.class);
-                    contactsIntent.putExtra("username", et_username.getText().toString());
-                    startActivity(contactsIntent);
+                    if(response.code() == 200) {
+                        Log.i("Login", response.body().toString());
+                        Intent contactsIntent = new Intent(getApplicationContext(), ContactsActivity.class);
+                        contactsIntent.putExtra("username", et_username.getText().toString());
+                        startActivity(contactsIntent);
+                    } else{
+                        Log.i("Login", "Error, code: " + response.code());
+                    }
                 }
 
                 @Override

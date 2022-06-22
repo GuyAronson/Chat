@@ -1,42 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="wrap_content"
-    android:layout_marginLeft="50dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:padding="2dp">
 
     <RelativeLayout
+        android:id="@+id/msg_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:background="@color/greyer"
-        android:id="@+id/msg_container"
+        android:layout_alignParentLeft="true"
         android:maxWidth="250dp">
 
         <TextView
+            android:id="@+id/partnerMsg_data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Partner Message Display Here "
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            android:paddingLeft="7dp"
-            android:paddingRight="40dp"
-            android:paddingBottom="7dp"
+            android:paddingStart="7dp"
             android:paddingTop="7dp"
-            android:id="@+id/partnerMsg_data">
-
-        </TextView>
+            android:paddingEnd="40dp"
+            android:paddingBottom="7dp"
+            android:text="Partner Message Display Here "
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/partnerMsg_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/partnerMsg_time"
-            android:textSize="10sp"
-            android:layout_toRightOf="@id/partnerMsg_data"
-            android:layout_marginLeft="-40dp"
             android:layout_alignBottom="@id/partnerMsg_data"
-            android:text="20:09"
+            android:layout_marginLeft="-40dp"
+            android:layout_toRightOf="@id/partnerMsg_data"
             android:padding="7dp"
-            android:textColor="@color/black" />
+            android:text="20:09"
+            android:textColor="@color/black"
+            android:textSize="10sp" />
 
 
     </RelativeLayout>

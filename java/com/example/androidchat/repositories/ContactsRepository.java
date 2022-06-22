@@ -11,6 +11,7 @@ import com.example.androidchat.api.API;
 import com.example.androidchat.api.WebServiceAPI;
 import com.example.androidchat.clientdb.ClientDB;
 import com.example.androidchat.daos.ChatDao;
+import com.example.androidchat.daos.PartnerDao;
 import com.example.androidchat.entities.Chat;
 import com.example.androidchat.entities.Partner;
 
@@ -23,11 +24,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ContactsRepository{
-    private ClientDB db;
-    private WebServiceAPI api = API.get();
-    private ChatDao chatDao;
-    private String loggedUser;
-    private ChatListData chats;
+    private final ClientDB db;
+    private final WebServiceAPI api = API.get();
+    private final ChatDao chatDao;
+    private final PartnerDao partnerDao;
+    private final String loggedUser;
+    private final ChatListData chats;
 
     class ChatListData extends MutableLiveData<List<Chat>>{
         public ChatListData() {
@@ -49,9 +51,11 @@ public class ContactsRepository{
     public ContactsRepository(String username, Context context) {
         this.loggedUser = username;
         this.db = ClientDB.getInstance(context);    // getting the DB
+        this.partnerDao = db.partnerDao();         // Creating the partnerDao
         this.chatDao = db.chatDao();         // Creating the chatDao
         this.chats = new ChatListData();     // Creating the chat list from the dao
 
+        //Get all chats - insert to the live data and to the Dao
         Call<List<Chat>> chatsCall = API.get().getUserChats(username);
         chatsCall.enqueue(new Callback<List<Chat>>() {
             @Override
@@ -79,6 +83,36 @@ public class ContactsRepository{
             @Override
             public void onFailure(Call<List<Chat>> call, Throwable t) {
                 Log.i("ChatRepository", "Failure to get the user chats");
+            }
+        });
+
+        // Getting all Contacts and insert to the partner Dao
+        Call<List<Partner>> contactsCall = API.get().getAllContacts(username);
+        contactsCall.enqueue(new Callback<List<Partner>>() {
+            @Override
+            public void onResponse(Call<List<Partner>> call, Response<List<Partner>> response) {
+                if(response.code() == 200){
+                    List<Partner> allPartners = response.body();
+                    if(allPartners != null) {
+
+                        // Update the partners into the Dao - in another thread
+                        new Thread(() -> {
+                            partnerDao.clearTable();
+                            for (Partner partner : allPartners) {
+                                partnerDao.insert(partner);
+                            }
+                        }).start();
+
+                        Log.i("ContactsRepository", "Got partners!");
+                    }
+                } else{
+                    Log.i("ContactsRepository", "Failure to get the partners, code: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Partner>> call, Throwable t) {
+                Log.i("MessagesRepository", "Failure to get the partners");
             }
         });
     }

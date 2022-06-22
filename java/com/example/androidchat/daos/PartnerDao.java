@@ -27,4 +27,7 @@ public interface PartnerDao {
 
     @Delete
     void delete(Partner partner);
+
+    @Query("DELETE FROM Partner")
+    public void clearTable();
 }

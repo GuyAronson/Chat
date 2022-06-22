@@ -44,7 +44,7 @@ public class Partner {
     }
     public Partner()
     {
-        this.Username = this.Nickname = this.ServerAddress = null;
+        this.Username = this.Nickname = this.ServerAddress = "";
     }
     @Override
     public String toString()

@@ -100,6 +100,7 @@ public class ContactsActivity extends AppCompatActivity {
                 Intent chatRoomIntent = new Intent(getApplicationContext(), ChatRoomActivity.class);
                 chatRoomIntent.putExtra("username", c.getUserID());
                 chatRoomIntent.putExtra("partner", c.getPartnerID());
+                chatRoomIntent.putExtra("chatID", c.getID());
                 startActivity(chatRoomIntent);
             }
         });
