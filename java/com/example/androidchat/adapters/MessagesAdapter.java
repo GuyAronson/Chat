@@ -34,10 +34,10 @@ public class MessagesAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (viewType == USER_MSG) {
-            View view = LayoutInflater.from(context).inflate(R.layout.partner_msg_layout, parent, false);
+            View view = LayoutInflater.from(context).inflate(R.layout.user_msg_layout, parent, false);
             return new UserMessageHolder(view);
         } else { // partner message
-            View view = LayoutInflater.from(context).inflate(R.layout.user_msg_layout, parent, false);
+            View view = LayoutInflater.from(context).inflate(R.layout.partner_msg_layout, parent, false);
             return new PartnerMessageHolder(view);
         }
     }
