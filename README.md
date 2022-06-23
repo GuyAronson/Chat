@@ -27,7 +27,7 @@ In order to change the base URL you must change the following variable:
 <img width="400" alt="API URL" src="public/pictures/api_url.png">
 
 ### Chat Server and WebAPI - C#
-The chat server runs on port 7000 and the WebAPI runs on port 7001.
+The chat server runs on port 7001 and the WebAPI runs on port 7000.
 In order to change the port(s), you can change the file Properties/launchSettings.json:
 
 <img width="400" alt="launchSettings" src="public/pictures/launchSettings.png">
