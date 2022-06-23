@@ -70,7 +70,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         viewManager.setStackFromEnd(true);
         chatRecyclerView.setLayoutManager(viewManager);
         MessagesAdapter adapter = new MessagesAdapter(this, this.messages, this.loggedUser,
-                this.partner.getUsername());
+                partnerName);
         chatRecyclerView.setAdapter(adapter);
 
         this.messagesVM.getAll().observe(this, msgs -> {

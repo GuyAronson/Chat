@@ -146,6 +146,10 @@ public class MessagesRepository{
             }
         });
 
+        // Change the partner serverAddress - to match to Android
+        if(p.getServerAddress().contains("localhost")){
+            p.setServerAddress(p.getServerAddress().replace("localhost","10.0.2.2"));
+        }
         Call<Void> transferCall =  API.set(p.getServerAddress()).trasnferMessage(p.getUsername(),
                                     loggedUser, msg.getData());
         transferCall.enqueue(new Callback<Void>() {

@@ -154,6 +154,11 @@ public class ContactsRepository{
             }
         });
 
+
+        // Change the partner serverAddress - to match to Android
+        if(p.getServerAddress().contains("localhost")){
+            p.setServerAddress(p.getServerAddress().replace("localhost","10.0.2.2"));
+        }
         Call<Void> invitationCall =  API.set(p.getServerAddress()).sendInvitation(p.getUsername(),
                                                         loggedUser, API.myServerAddress,loggedUser);
         invitationCall.enqueue(new Callback<Void>() {
