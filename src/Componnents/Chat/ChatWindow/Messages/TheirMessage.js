@@ -1,3 +1,4 @@
+import React from 'react'
 export const TheirMessage = props => {
     let time = props.message.timeStamp;
     let type = props.message.type; //for later use - the type of HTML we'll return depends on the type

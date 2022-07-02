@@ -1,4 +1,4 @@
-
+import React from 'react'
 export const RecordingDisplay = ({record}) => {
     return (
         <div className='m-2'>

@@ -257,7 +257,7 @@ li:nth-child(2).chat-item{
   height: 65vh;
   overflow-y: scroll;
   /* padding: 20px; */
-  background-image: url(../public/Pictures/chat-wallpaper.jpg);
+  background-image: url(/pictures/chat-wallpaper.jpg);
   background-repeat: no-repeat;
   background-clip: border-box;
   background-size:cover;
