@@ -2,7 +2,7 @@
 
 ![Demo CountPages alpha](public/appDemo.gif)
 
-
+**Note: this project is divided to 3 stages, this is the first, in branch 'ex2' there is the 2nd stage, and in branch 'ex3' there is the 3rd stage**
 
 ## Installation and getting started
 1) First make sure you have react install on your device
@@ -25,8 +25,6 @@ npm start
 # or
 yarn start
 ```
-**Note: this project is divided to 3 stages, this is the first, in branch 'ex2' there is the 2nd stage, and in branch 'ex3' there is the 3rd stage**
-
 ## App's Capabilities
 
 The app, as of for now, consists of 3 main pages:
